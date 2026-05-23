@@ -1,0 +1,11 @@
+.root {
+  display: inline-block;
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-caption);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--blinkx-color-text-brand);
+  background: color-mix(in srgb, var(--blinkx-color-text-brand) 12%, transparent);
+  padding: 1px 5px;
+  border-radius: var(--blinkx-radius-xs, 2px);
+}

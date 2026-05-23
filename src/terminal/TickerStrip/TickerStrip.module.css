@@ -1,0 +1,76 @@
+.strip {
+  height: var(--blinkx-ticker-height);
+  background: var(--blinkx-color-surface-elevated);
+  border-bottom: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+  z-index: var(--blinkx-z-sticky);
+}
+.strip::before,
+.strip::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 48px;
+  pointer-events: none;
+  z-index: 2;
+}
+.strip::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--blinkx-color-surface-elevated), transparent);
+}
+.strip::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--blinkx-color-surface-elevated), transparent);
+}
+.track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: max-content;
+  animation: scroll 50s linear infinite;
+}
+.track:hover { animation-play-state: paused; }
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 22px;
+  border-right: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  white-space: nowrap;
+  height: 100%;
+  cursor: pointer;
+  transition: background var(--blinkx-duration-fast) var(--blinkx-ease-enter);
+}
+.item:hover { background: var(--blinkx-color-surface-card); }
+.symbol {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--blinkx-color-text-tertiary);
+  text-transform: uppercase;
+}
+.ltp {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-body);
+  font-weight: 500;
+  color: var(--blinkx-color-text-primary);
+  font-feature-settings: "tnum";
+}
+.change {
+  font-family: var(--blinkx-font-sans);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+}
+.pos { color: var(--blinkx-color-text-green); }
+.neg { color: var(--blinkx-color-text-red);   }
+.pct { opacity: 0.75; }
+.arrow { font-size: 8px; margin-left: 3px; }

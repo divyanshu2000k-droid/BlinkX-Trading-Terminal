@@ -1,0 +1,2 @@
+.root { display: inline-block; font-size: var(--blinkx-text-body); color: var(--blinkx-color-text-primary); }
+.mono { font-family: var(--blinkx-font-mono); font-variant-numeric: tabular-nums; }

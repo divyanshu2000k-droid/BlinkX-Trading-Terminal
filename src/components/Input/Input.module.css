@@ -1,0 +1,76 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--blinkx-spacing-sm);
+  width: 100%;
+}
+
+.label {
+  font-size: var(--blinkx-text-label);
+  font-weight: 500;
+  color: var(--blinkx-color-text-secondary);
+  font-family: var(--blinkx-font-sans);
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--blinkx-spacing-sm);
+  border: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-default);
+  border-radius: var(--blinkx-radius-md);
+  background: var(--blinkx-color-surface-card);
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+  overflow: hidden;
+}
+
+.size_sm { height: 32px; padding: 0 var(--blinkx-spacing-lg); }
+.size_md { height: 40px; padding: 0 var(--blinkx-spacing-xl); }
+
+.inputWrapper:hover:not(.disabled) {
+  border-color: var(--blinkx-color-stroke-dark);
+}
+.focused {
+  border-color: var(--blinkx-color-stroke-brand) !important;
+  border-width: var(--blinkx-stroke-lg);
+  box-shadow: 0 0 0 var(--blinkx-stroke-focus) var(--blinkx-color-stroke-focus-ring);
+}
+.disabled {
+  background: var(--blinkx-color-bg-brand-disable);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.error {
+  border-color: var(--blinkx-color-text-red) !important;
+}
+
+.input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-body);
+  color: var(--blinkx-color-text-primary);
+  width: 100%;
+}
+.input::placeholder { color: var(--blinkx-color-text-tertiary); }
+.input:disabled { cursor: not-allowed; }
+
+/* Number input — remove arrows */
+.input[type="number"]::-webkit-inner-spin-button,
+.input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+.input[type="number"] { -moz-appearance: textfield; }
+
+.prefix, .suffix {
+  font-size: var(--blinkx-text-label);
+  color: var(--blinkx-color-text-tertiary);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.errorMsg {
+  font-size: var(--blinkx-text-label);
+  color: var(--blinkx-color-text-red);
+  font-family: var(--blinkx-font-sans);
+}

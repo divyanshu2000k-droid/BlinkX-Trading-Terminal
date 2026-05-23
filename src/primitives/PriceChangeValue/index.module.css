@@ -1,0 +1,5 @@
+.root { display: inline-block; font-size: var(--blinkx-text-body); }
+.positive { color: var(--blinkx-color-text-positive); }
+.negative { color: var(--blinkx-color-text-negative); }
+.neutral  { color: var(--blinkx-color-text-secondary); }
+.mono { font-family: var(--blinkx-font-mono); font-variant-numeric: tabular-nums; }

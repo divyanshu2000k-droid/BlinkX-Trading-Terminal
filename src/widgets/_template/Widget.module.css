@@ -1,0 +1,59 @@
+/* ══════════════════════════════════════════════════════
+   WIDGET TEMPLATE STYLES
+   Only --blinkx-* tokens allowed. No hardcoded values.
+   ══════════════════════════════════════════════════════ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--blinkx-color-surface-card);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--blinkx-spacing-lg) var(--blinkx-spacing-xl);
+  border-bottom: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-elevated);
+  flex-shrink: 0;
+  height: 36px;
+}
+
+.title {
+  font-size: var(--blinkx-text-body);
+  font-weight: 600;
+  color: var(--blinkx-color-text-primary);
+  font-family: var(--blinkx-font-sans);
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: var(--blinkx-spacing-xl);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--blinkx-spacing-lg);
+  color: var(--blinkx-color-text-disabled);
+}
+
+.empty svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--blinkx-color-stroke-default);
+}
+
+.empty span {
+  font-size: var(--blinkx-text-label);
+  font-family: var(--blinkx-font-sans);
+  letter-spacing: 0.04em;
+  color: var(--blinkx-color-text-disabled);
+}

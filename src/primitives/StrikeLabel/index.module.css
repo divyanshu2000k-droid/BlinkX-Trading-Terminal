@@ -1,0 +1,29 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--blinkx-spacing-xs);
+  font-size: var(--blinkx-text-body);
+}
+
+.mono {
+  font-family: var(--blinkx-font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--blinkx-color-text-primary);
+}
+
+.badge {
+  font-size: var(--blinkx-text-caption);
+  font-weight: 600;
+  padding: 0 3px;
+  border-radius: var(--blinkx-radius-xs, 2px);
+}
+
+.ce {
+  color: var(--blinkx-color-text-positive);
+  background: color-mix(in srgb, var(--blinkx-color-text-positive) 12%, transparent);
+}
+
+.pe {
+  color: var(--blinkx-color-text-negative);
+  background: color-mix(in srgb, var(--blinkx-color-text-negative) 12%, transparent);
+}

@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ═══════════════════════════════════════════════════
+   BLINKX DESIGN SYSTEM V1.5 — CSS TOKENS
+   Light mode = :root
+   Dark mode  = [data-theme="dark"]
+═══════════════════════════════════════════════════ */
+
+:root {
+  /* ── Typography ── */
+  --blinkx-font-sans:    'Barlow', system-ui, sans-serif;
+  --blinkx-font-display: 'BlinkXSans New', 'Barlow', sans-serif;
+  --blinkx-font-mono:    'Barlow', monospace;
+
+  /* ── Typography scale ── */
+  --blinkx-text-h1:       1.75rem;
+  --blinkx-text-h2:       1.5rem;
+  --blinkx-text-h3:       1.25rem;
+  --blinkx-text-h4:       1.125rem;
+  --blinkx-text-h5:       1rem;
+  --blinkx-text-h6:       0.875rem;
+  --blinkx-text-body:     0.75rem;
+  --blinkx-text-label:    0.688rem;
+  --blinkx-text-label-sm: 0.625rem;
+  --blinkx-text-display:  2rem;
+
+  /* ── Spacing ── */
+  --blinkx-spacing-none:  0;
+  --blinkx-spacing-xxs:   0.0625rem;
+  --blinkx-spacing-xs:    0.125rem;
+  --blinkx-spacing-sm:    0.25rem;
+  --blinkx-spacing-md:    0.375rem;
+  --blinkx-spacing-lg:    0.5rem;
+  --blinkx-spacing-xl:    0.75rem;
+  --blinkx-spacing-2xl:   1rem;
+  --blinkx-spacing-3xl:   1.25rem;
+  --blinkx-spacing-4xl:   1.5rem;
+  --blinkx-spacing-5xl:   1.75rem;
+  --blinkx-spacing-6xl:   2rem;
+  --blinkx-spacing-7xl:   2.375rem;
+  --blinkx-spacing-8xl:   2.5rem;
+  --blinkx-spacing-9xl:   3rem;
+  --blinkx-spacing-10xl:  3.25rem;
+  --blinkx-spacing-11xl:  3.5rem;
+  --blinkx-spacing-12xl:  4rem;
+  --blinkx-spacing-13xl:  4.5rem;
+  --blinkx-spacing-14xl:  5rem;
+
+  /* ── Border Radius ── */
+  --blinkx-radius-none:   0;
+  --blinkx-radius-xxs:    2px;
+  --blinkx-radius-xs:     4px;
+  --blinkx-radius-sm:     6px;
+  --blinkx-radius-md:     8px;
+  --blinkx-radius-lg:     10px;
+  --blinkx-radius-xl:     12px;
+  --blinkx-radius-2xl:    16px;
+  --blinkx-radius-3xl:    20px;
+  --blinkx-radius-4xl:    24px;
+  --blinkx-radius-full:   9999px;
+
+  /* ── Shadows (light) ── */
+  --blinkx-shadow-xs:   0 1px 2px rgba(10,13,16,0.01);
+  --blinkx-shadow-sm:   0 2px 4px rgba(10,13,16,0.02);
+  --blinkx-shadow-md:   0 4px 8px rgba(10,13,16,0.04);
+  --blinkx-shadow-lg:   0 6px 12px rgba(10,13,16,0.06);
+  --blinkx-shadow-xl:   0 9px 18px rgba(10,13,16,0.09);
+  --blinkx-shadow-2xl:  0 12px 24px rgba(10,13,16,0.12);
+  --blinkx-shadow-3xl:  0 18px 36px rgba(10,13,16,0.18);
+
+  /* ── Stroke weights ── */
+  --blinkx-stroke-default: 1px;
+  --blinkx-stroke-md:      1.25px;
+  --blinkx-stroke-lg:      1.5px;
+  --blinkx-stroke-focus:   3px;
+
+  /* ── Z-index ── */
+  --blinkx-z-base:          0;
+  --blinkx-z-raised:        10;
+  --blinkx-z-sticky:        100;
+  --blinkx-z-overlay:       200;
+  --blinkx-z-dropdown:      300;
+  --blinkx-z-tooltip:       400;
+  --blinkx-z-toast:         500;
+  --blinkx-z-modal:         600;
+  --blinkx-z-modal-tooltip: 700;
+
+  /* ── Transitions ── */
+  --blinkx-duration-fast:     100ms;
+  --blinkx-duration-normal:   150ms;
+  --blinkx-duration-moderate: 200ms;
+  --blinkx-duration-slow:     300ms;
+  --blinkx-duration-slower:   400ms;
+  --blinkx-ease-default:      ease-in-out;
+  --blinkx-ease-enter:        ease-out;
+  --blinkx-ease-exit:         ease-in;
+  --blinkx-ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Layout ── */
+  --blinkx-header-height: 56px;
+  --blinkx-ticker-height: 34px;
+
+  /* ════════════════════════════════════════════
+     LIGHT MODE COLOR TOKENS
+  ════════════════════════════════════════════ */
+
+  --blinkx-color-bg-brand-default:      #171EFD;
+  --blinkx-color-bg-brand-subtle-1:     #EEF0FF;
+  --blinkx-color-bg-brand-subtle-2:     #E0E2FF;
+  --blinkx-color-bg-brand-disable:      #F5F5F5;
+  --blinkx-color-bg-brand-hover-prime:  #0F15D4;
+  --blinkx-color-bg-brand-hover-on-sec: #EEF0FF;
+  --blinkx-color-bg-brand-hover-on-tab: #F5F6FF;
+  --blinkx-color-bg-brand-focus-ring:   #E0E2FF;
+  --blinkx-color-bg-buy-default:        #2BB02B;
+  --blinkx-color-bg-buy-hover-on-prime: #229022;
+  --blinkx-color-bg-buy-hover-sec-cta:  #F0FFF0;
+  --blinkx-color-bg-buy-focus-ring:     #DCFFDC;
+  --blinkx-color-bg-sell-default:       #DD2006;
+
+  --blinkx-color-surface-page:     #FFFFFF;
+  --blinkx-color-surface-card:     #F9F9F9;
+  --blinkx-color-surface-elevated: #F2F2F2;
+  --blinkx-color-surface-overlay:  #EBEBEB;
+
+  --blinkx-color-text-primary:           #41414E;
+  --blinkx-color-text-secondary:         #666666;
+  --blinkx-color-text-tertiary:          #989898;
+  --blinkx-color-text-brand:             #171EFD;
+  --blinkx-color-text-green:             #2BB02B;
+  --blinkx-color-text-red:               #DD2006;
+  --blinkx-color-text-on-disabled-cta:   #9D9D9D;
+  --blinkx-color-text-white-on-cta:      #FFFFFF;
+  --blinkx-color-text-on-segment-button: #171EFD;
+  --blinkx-color-text-disabled:          #CECECE;
+
+  --blinkx-color-icon-primary:          #414143;
+  --blinkx-color-icon-secondary:        #69696D;
+  --blinkx-color-icon-disabled:         #CECECE;
+  --blinkx-color-icon-brand:            #171EFD;
+  --blinkx-color-icon-fill-white:       #FFFFFF;
+  --blinkx-color-icon-fill-on-disabled: #9D9D9D;
+
+  --blinkx-color-stroke-default:    #E7E7E7;
+  --blinkx-color-stroke-subtle:     #DDDDDD;
+  --blinkx-color-stroke-brand:      #171EFD;
+  --blinkx-color-stroke-dark:       #414143;
+  --blinkx-color-stroke-disabled:   #CECECE;
+  --blinkx-color-stroke-focus-ring: #DBE1FB;
+  --blinkx-color-stroke-toggle:     #E2E8F0;
+
+  --blinkx-gradient-g1: #3B1757;
+  --blinkx-gradient-g2: #A1006F;
+  --blinkx-gradient-g3: #DD3B59;
+  --blinkx-gradient-g4: #FB8043;
+  --blinkx-gradient-g5: #F8BC67;
+
+  /* ── Exchange/Segment badge colors ── */
+  --blinkx-badge-nse:      #2BB02B;
+  --blinkx-badge-nse-bg:   rgba(43,176,43,0.1);
+  --blinkx-badge-nse-line: rgba(43,176,43,0.3);
+  --blinkx-badge-bse:      #171EFD;
+  --blinkx-badge-bse-bg:   rgba(23,30,253,0.1);
+  --blinkx-badge-bse-line: rgba(23,30,253,0.3);
+  --blinkx-badge-nfo:      #FB8043;
+  --blinkx-badge-nfo-bg:   rgba(251,128,67,0.1);
+  --blinkx-badge-nfo-line: rgba(251,128,67,0.3);
+  --blinkx-badge-bfo:      #A1006F;
+  --blinkx-badge-bfo-bg:   rgba(161,0,111,0.1);
+  --blinkx-badge-bfo-line: rgba(161,0,111,0.3);
+  --blinkx-badge-mcx:      #F0B22A;
+  --blinkx-badge-mcx-bg:   rgba(240,178,42,0.1);
+  --blinkx-badge-mcx-line: rgba(240,178,42,0.3);
+  --blinkx-badge-mtf:      #8B5CF6;
+  --blinkx-badge-mtf-bg:   rgba(139,92,246,0.1);
+  --blinkx-badge-mtf-line: rgba(139,92,246,0.3);
+  --blinkx-badge-etf:      #6B7280;
+  --blinkx-badge-etf-bg:   rgba(107,114,128,0.1);
+  --blinkx-badge-etf-line: rgba(107,114,128,0.3);
+}
+
+/* ════════════════════════════════════════════
+   DARK MODE OVERRIDES
+════════════════════════════════════════════ */
+[data-theme="dark"] {
+  /* ── High-Density Sizing overrides for 100% zoom native fit ── */
+  --blinkx-header-height: 40px;
+  --blinkx-ticker-height: 24px;
+
+  /* ── High-Density Typography Scale overrides ── */
+  --blinkx-text-h1:       1.5rem;
+  --blinkx-text-h2:       1.3rem;
+  --blinkx-text-h3:       1.15rem;
+  --blinkx-text-h4:       1.05rem;
+  --blinkx-text-h5:       0.875rem;  /* ~14px */
+  --blinkx-text-h6:       0.75rem;   /* ~12px */
+  --blinkx-text-body:     0.688rem;  /* ~11px */
+  --blinkx-text-label:    0.625rem;  /* ~10px */
+  --blinkx-text-label-sm: 0.5625rem; /* ~9px */
+
+  /* ── High-Density Spacing overrides ── */
+  --blinkx-spacing-xs:    1px;
+  --blinkx-spacing-sm:    2px;
+  --blinkx-spacing-md:    4px;
+  --blinkx-spacing-lg:    6px;
+  --blinkx-spacing-xl:    8px;
+  --blinkx-spacing-2xl:   12px;
+  --blinkx-spacing-3xl:   16px;
+
+  --blinkx-color-bg-brand-default:      #4E54FD;
+  --blinkx-color-bg-brand-subtle-1:     #1A1C3A;
+  --blinkx-color-bg-brand-subtle-2:     #1E2145;
+  --blinkx-color-bg-brand-disable:      #2A2A2A;
+  --blinkx-color-bg-brand-hover-prime:  #3D42D4;
+  --blinkx-color-bg-brand-hover-on-sec: #1A1C3A;
+  --blinkx-color-bg-brand-hover-on-tab: #1A1C3A;
+  --blinkx-color-bg-brand-focus-ring:   #1E2145;
+  --blinkx-color-bg-buy-default:        #48A848;
+  --blinkx-color-bg-buy-hover-on-prime: #3D8F3D;
+  --blinkx-color-bg-buy-hover-sec-cta:  #1A2E1A;
+  --blinkx-color-bg-buy-focus-ring:     #1E3A1E;
+  --blinkx-color-bg-sell-default:       #CD4937;
+
+  --blinkx-color-surface-page:     #0D0F14;
+  --blinkx-color-surface-card:     #161A21;
+  --blinkx-color-surface-elevated: #1C2128;
+  --blinkx-color-surface-overlay:  #232831;
+
+  --blinkx-color-text-primary:           #CACACE;
+  --blinkx-color-text-secondary:         #B2B2B3;
+  --blinkx-color-text-tertiary:          #84848F;
+  --blinkx-color-text-brand:             #4E54FD;
+  --blinkx-color-text-green:             #48A848;
+  --blinkx-color-text-red:               #CD4937;
+  --blinkx-color-text-on-disabled-cta:   #808081;
+  --blinkx-color-text-white-on-cta:      #FFFFFF;
+  --blinkx-color-text-on-segment-button: #8F93FE;
+  --blinkx-color-text-disabled:          #4D4F52;
+
+  --blinkx-color-icon-primary:          #999999;
+  --blinkx-color-icon-secondary:        #6B6B6B;
+  --blinkx-color-icon-disabled:         #4D4F52;
+  --blinkx-color-icon-brand:            #4E54FD;
+  --blinkx-color-icon-fill-white:       #FFFFFF;
+  --blinkx-color-icon-fill-on-disabled: #808081;
+
+  --blinkx-color-stroke-default:    #2A3038;
+  --blinkx-color-stroke-subtle:     #1F242C;
+  --blinkx-color-stroke-brand:      #4E54FD;
+  --blinkx-color-stroke-dark:       #999999;
+  --blinkx-color-stroke-disabled:   #4D4F52;
+  --blinkx-color-stroke-focus-ring: #1E2145;
+  --blinkx-color-stroke-toggle:     #2A3038;
+
+  --blinkx-shadow-xs:   0 1px 2px rgba(10,13,16,0.06);
+  --blinkx-shadow-sm:   0 2px 4px rgba(10,13,16,0.12);
+  --blinkx-shadow-md:   0 4px 8px rgba(10,13,16,0.20);
+  --blinkx-shadow-lg:   0 6px 12px rgba(10,13,16,0.28);
+  --blinkx-shadow-xl:   0 9px 18px rgba(10,13,16,0.42);
+  --blinkx-shadow-2xl:  0 12px 24px rgba(10,13,16,0.56);
+  --blinkx-shadow-3xl:  0 18px 36px rgba(10,13,16,0.82);
+
+  --blinkx-gradient-g1: #FB1F71;
+  --blinkx-gradient-g2: #8B0B51;
+  --blinkx-gradient-g3: #8F2F43;
+  --blinkx-gradient-g4: #A15936;
+  --blinkx-gradient-g5: #9C620F;
+}

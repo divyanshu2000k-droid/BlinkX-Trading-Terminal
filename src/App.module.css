@@ -1,0 +1,30 @@
+.appRoot {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--blinkx-color-surface-page);
+  font-family: var(--blinkx-font-sans);
+}
+
+.workspaceShell {
+  flex: 1;
+  min-height: 0;      /* NON-NEGOTIABLE — prevents flex overflow */
+  position: relative;
+  overflow: hidden;
+}
+
+.toastContainer {
+  position: fixed;
+  bottom: var(--blinkx-spacing-4xl);
+  right: var(--blinkx-spacing-4xl);
+  z-index: var(--blinkx-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--blinkx-spacing-lg);
+  pointer-events: none;
+}
+
+.toastContainer > * {
+  pointer-events: auto;
+}

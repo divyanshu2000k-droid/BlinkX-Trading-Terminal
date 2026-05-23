@@ -1,0 +1,22 @@
+.root {
+  display: inline-block;
+  font-size: var(--blinkx-text-body);
+  color: var(--blinkx-color-text-primary);
+  border-radius: var(--blinkx-radius-xs, 2px);
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.mono {
+  font-family: var(--blinkx-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.flashUp {
+  background: color-mix(in srgb, var(--blinkx-color-text-positive) 18%, transparent);
+  color: var(--blinkx-color-text-positive);
+}
+
+.flashDown {
+  background: color-mix(in srgb, var(--blinkx-color-text-negative) 18%, transparent);
+  color: var(--blinkx-color-text-negative);
+}

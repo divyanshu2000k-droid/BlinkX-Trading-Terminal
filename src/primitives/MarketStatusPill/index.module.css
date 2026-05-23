@@ -1,0 +1,29 @@
+.pill {
+  display: inline-block;
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-caption);
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: var(--blinkx-radius-sm);
+  white-space: nowrap;
+}
+
+.open {
+  color: var(--blinkx-color-text-positive);
+  background: color-mix(in srgb, var(--blinkx-color-text-positive) 14%, transparent);
+}
+
+.closed {
+  color: var(--blinkx-color-text-secondary);
+  background: var(--blinkx-color-surface-elevated);
+}
+
+.preOpen {
+  color: var(--blinkx-color-text-brand);
+  background: color-mix(in srgb, var(--blinkx-color-text-brand) 12%, transparent);
+}
+
+.postClose {
+  color: var(--blinkx-color-text-tertiary);
+  background: var(--blinkx-color-surface-elevated);
+}

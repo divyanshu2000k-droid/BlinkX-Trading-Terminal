@@ -1,0 +1,80 @@
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--blinkx-spacing-xs);
+  padding: 0 var(--blinkx-spacing-sm);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  min-width: 0;
+  overflow: hidden; /* NON-NEGOTIABLE — prevents tab overlap spillover */
+  user-select: none;
+}
+
+.tab.active {
+  border-bottom: 2px solid var(--blinkx-color-text-brand);
+}
+
+.dragHandle {
+  color: var(--blinkx-color-text-tertiary);
+  opacity: 0.3;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.tab:hover .dragHandle {
+  opacity: 0.6;
+}
+
+.label {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-body);
+  color: var(--blinkx-color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+}
+
+.tab.active .label {
+  color: var(--blinkx-color-text-primary);
+}
+
+/* × IS HIDDEN BY DEFAULT */
+.closeBtn {
+  opacity: 0;
+  pointer-events: none;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  border-radius: var(--blinkx-radius-sm);
+  color: var(--blinkx-color-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 100ms ease, background 100ms ease;
+}
+
+/* SHOW × ON TAB HOVER */
+.tab:hover .closeBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* SHOW × ON ACTIVE TAB */
+.tab.active .closeBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.closeBtn:hover {
+  background: var(--blinkx-color-surface-elevated);
+  color: var(--blinkx-color-text-primary);
+}

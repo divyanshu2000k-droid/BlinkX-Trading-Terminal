@@ -1,0 +1,34 @@
+.stateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: var(--blinkx-spacing-sm);
+  padding: var(--blinkx-spacing-lg);
+  box-sizing: border-box;
+}
+
+.errorText {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-body);
+  color: var(--blinkx-color-text-negative);
+  text-align: center;
+}
+
+.retryBtn {
+  margin-top: var(--blinkx-spacing-xs);
+}
+
+.emptyIcon {
+  color: var(--blinkx-color-text-tertiary);
+  opacity: 0.5;
+}
+
+.emptyText {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-body);
+  color: var(--blinkx-color-text-tertiary);
+  text-align: center;
+}

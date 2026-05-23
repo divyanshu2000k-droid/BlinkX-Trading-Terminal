@@ -1,0 +1,25 @@
+.root {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: var(--blinkx-text-body);
+  gap: 1px;
+}
+
+.positive { color: var(--blinkx-color-text-positive); }
+.negative { color: var(--blinkx-color-text-negative); }
+.neutral  { color: var(--blinkx-color-text-secondary); }
+
+.mono {
+  font-family: var(--blinkx-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.prefix {
+  font-size: var(--blinkx-text-caption);
+  opacity: 0.8;
+}
+
+.pct {
+  font-size: var(--blinkx-text-caption);
+  opacity: 0.8;
+}
