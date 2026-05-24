@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getTVTheme } from '../../../providers/tradingview/tvThemeMap.js';
 
-export function useChart(containerRef, { symbol, exchange, timeframe, widgetId, theme, ready }) {
+export function useChart(containerRef, { timeframe, widgetId, theme, ready }) {
   useEffect(() => {
     if (!ready) return;
     if (!document.getElementById(widgetId)) return;
@@ -16,7 +16,6 @@ export function useChart(containerRef, { symbol, exchange, timeframe, widgetId, 
 
     const widget = new window.TradingView.widget({
       container_id: widgetId,
-      symbol: exchange ? `${exchange}:${symbol}` : symbol,
       interval: timeframe,
       timezone: 'Asia/Kolkata',
       theme: colors.theme,
@@ -49,5 +48,5 @@ export function useChart(containerRef, { symbol, exchange, timeframe, widgetId, 
         if (containerRef.current) containerRef.current.innerHTML = '';
       } catch (_) {}
     };
-  }, [ready, symbol, exchange, timeframe, widgetId, theme]);
+  }, [ready, timeframe, widgetId, theme]);
 }

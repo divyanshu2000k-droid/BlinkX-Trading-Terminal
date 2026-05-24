@@ -1,0 +1,145 @@
+/*
+  LAYOUT EXPLANATION:
+
+  scrollContainer — fills Dockview panel, scrolls
+  gridContainer — inner padding and spacing
+  infoCard — Symbol Info banner, fixed 180px
+  twoColGrid — side by side columns
+  oneColGrid — single stacked column
+  leftCol — Tech Analysis + Company Profile
+  rightCol — Fundamental Data (tall)
+  card — 420px fixed height
+  cardTall — 860px = two cards + gap
+  cardHeader — 36px fixed header
+  cardEmbed — fills card minus header
+*/
+
+.scrollContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--blinkx-color-surface-card);
+}
+
+.gridContainer {
+  padding: var(--blinkx-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--blinkx-spacing-lg);
+}
+
+/* ── Symbol Info Banner ── */
+.infoCard {
+  width: 100%;
+  height: 180px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: var(--blinkx-radius-md);
+  border: var(--blinkx-stroke-default) solid
+    var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-elevated);
+}
+
+.infoEmbed {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.infoEmbed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+/* ── Grid layouts ── */
+.twoColGrid {
+  display: flex;
+  flex-direction: row;
+  gap: var(--blinkx-spacing-lg);
+  align-items: flex-start;
+}
+
+.oneColGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--blinkx-spacing-lg);
+}
+
+.leftCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--blinkx-spacing-lg);
+}
+
+.rightCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Cards ── */
+
+/* Standard card — 420px */
+/* Used for Technical Analysis and Company Profile */
+.card {
+  height: 420px;
+  flex-shrink: 0;
+  border-radius: var(--blinkx-radius-md);
+  border: var(--blinkx-stroke-default) solid
+    var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-elevated);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tall card — matches two cards + gap */
+/* 420 + 420 + spacing-lg(8px) = 848px */
+/* Use 860px for breathing room */
+.cardTall {
+  height: 860px;
+  flex-shrink: 0;
+  border-radius: var(--blinkx-radius-md);
+  border: var(--blinkx-stroke-default) solid
+    var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-elevated);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card header — fixed 36px */
+.cardHeader {
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--blinkx-spacing-xl);
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-body);
+  font-weight: 600;
+  color: var(--blinkx-color-text-secondary);
+  border-bottom: var(--blinkx-stroke-default) solid
+    var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-card);
+}
+
+/* Embed area inside card — fills card minus 36px header */
+.cardEmbed {
+  height: calc(100% - 36px);
+  width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.cardEmbed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}

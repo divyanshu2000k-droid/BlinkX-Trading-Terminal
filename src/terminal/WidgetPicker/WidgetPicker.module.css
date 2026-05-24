@@ -170,6 +170,12 @@
   padding: 1px 4px;
 }
 
+.liveBadgeWrap {
+  position: absolute;
+  top: 6px; right: 8px;
+  pointer-events: none;
+}
+
 .footer {
   display: flex;
   align-items: center;
@@ -188,4 +194,38 @@
   font-family: var(--blinkx-font-sans);
   font-size: 10px;
   color: var(--blinkx-color-text-tertiary);
+}
+
+.tickerSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--blinkx-spacing-xl) var(--blinkx-spacing-2xl);
+}
+
+.tickerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--blinkx-spacing-xs);
+}
+
+.tickerLabel {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blinkx-color-text-tertiary);
+  font-weight: 500;
+}
+
+.tickerSubtitle {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-body);
+  color: var(--blinkx-color-text-secondary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--blinkx-color-stroke-subtle);
+  margin: 0 var(--blinkx-spacing-2xl) var(--blinkx-spacing-xl);
 }

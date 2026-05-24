@@ -58,7 +58,7 @@
   text-transform: uppercase;
 }
 .ltp {
-  font-family: var(--blinkx-font-sans);
+  font-family: var(--blinkx-font-mono);
   font-size: var(--blinkx-text-body);
   font-weight: 500;
   color: var(--blinkx-color-text-primary);
@@ -66,11 +66,11 @@
 }
 .change {
   font-family: var(--blinkx-font-sans);
-  font-size: 11px;
+  font-size: var(--blinkx-text-label);
   display: flex;
   align-items: center;
 }
 .pos { color: var(--blinkx-color-text-green); }
 .neg { color: var(--blinkx-color-text-red);   }
 .pct { opacity: 0.75; }
-.arrow { font-size: 8px; margin-left: 3px; }
+.arrow { font-size: var(--blinkx-text-label-sm); margin-left: 3px; }

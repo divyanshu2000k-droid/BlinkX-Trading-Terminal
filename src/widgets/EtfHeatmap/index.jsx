@@ -1,34 +1,20 @@
-/**
- * Indices Widget
- *
- * Shows Indian market indices via TradingView
- * Symbol Overview iframe embed.
- *
- * Standard props contract:
- *   widgetId, config, density, panelApi
- */
-
 import { useRef, useState, useEffect } from 'react';
-import { useIndices } from './hooks/useIndices';
+import { useEtfHeatmap } from './hooks/useEtfHeatmap';
 import { useUiStore } from '../../stores/uiStore';
 import styles from './Widget.module.css';
 
-export function IndicesWidget({
+export default function EtfHeatmapWidget({
   widgetId,
   config,
   density,
   panelApi,
 }) {
   const theme = useUiStore(s => s.theme ?? 'dark');
-
-  // Track theme changes via MutationObserver
-  // Same proven pattern as Chart widget
   const [currentTheme, setCurrentTheme] = useState(theme);
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
-      const newTheme =
-        document.documentElement.getAttribute('data-theme') ?? 'dark';
+      const newTheme = document.documentElement.getAttribute('data-theme') ?? 'dark';
       setCurrentTheme(newTheme);
     });
     observer.observe(document.documentElement, {
@@ -40,7 +26,7 @@ export function IndicesWidget({
 
   const containerRef = useRef(null);
 
-  useIndices(containerRef, {
+  useEtfHeatmap(containerRef, {
     theme: currentTheme,
   });
 
@@ -53,5 +39,3 @@ export function IndicesWidget({
     </div>
   );
 }
-
-export default IndicesWidget;

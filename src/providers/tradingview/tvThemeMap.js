@@ -14,6 +14,7 @@
 const themeMap = {
   dark: {
     theme: 'dark',
+    toolbar_bg: '#1C2128',
     backgroundColor: '#161A21',
     gridColor: '#1e2029',
     textColor: '#a0a0b0',
@@ -22,6 +23,7 @@ const themeMap = {
   },
   light: {
     theme: 'light',
+    toolbar_bg: '#F2F2F2',
     backgroundColor: '#F9F9F9',
     gridColor: '#e4e4ed',
     textColor: '#555566',

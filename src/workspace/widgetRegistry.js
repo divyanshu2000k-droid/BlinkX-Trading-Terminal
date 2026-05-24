@@ -16,6 +16,9 @@ import ScalperBoxWidget from '../widgets/ScalperBox/index.jsx';
 import LiveScannerWidget from '../widgets/LiveScanner/index.jsx';
 import MoversWidget from '../widgets/Movers/index.jsx';
 import HeatmapWidget from '../widgets/Heatmap/index.jsx';
+import EtfHeatmapWidget from '../widgets/EtfHeatmap/index.jsx';
+import MarketScreenersWidget from '../widgets/MarketScreeners/index.jsx';
+import SymbolOverviewWidget from '../widgets/SymbolOverview/index.jsx';
 import IndicesWidget from '../widgets/Indices/index.jsx';
 import PortfolioWidget from '../widgets/Portfolio/index.jsx';
 import SessionPnLWidget from '../widgets/SessionPnL/index.jsx';
@@ -45,6 +48,9 @@ export const widgetRegistry = {
   'live-scanner':     LiveScannerWidget,
   'movers':           MoversWidget,
   'heatmap':          HeatmapWidget,
+  'etf-heatmap':      EtfHeatmapWidget,
+  'market-screeners': MarketScreenersWidget,
+  'symbol-overview':  SymbolOverviewWidget,
   'indices':          IndicesWidget,
   'portfolio':        PortfolioWidget,
   'session-pnl':      SessionPnLWidget,
@@ -62,7 +68,7 @@ export const widgetRegistry = {
 // All entries: ready: true (no "Soon" badges)
 export const widgetCatalog = [
   // Charting & Price Action
-  { id: 'chart',          label: 'Chart',           description: 'TradingView',    group: 'Charting & Price Action',   icon: 'M3 3v18h18M7 14l4-4 4 4 5-5',  ready: true, allowMultiple: true },
+  { id: 'chart',          label: 'Chart',           description: 'TradingView',    group: 'Charting & Price Action',   icon: 'M3 3v18h18M7 14l4-4 4 4 5-5',  ready: true, allowMultiple: true, tvWidget: true },
   { id: 'price-ladder',   label: 'Price Ladder',    description: 'Market Depth',   group: 'Charting & Price Action',   icon: 'M4 6h16M4 10h12M4 14h16M4 18h8', ready: true, allowMultiple: true },
   { id: 'time-and-sales', label: 'Time & Sales',    description: 'Trade tape',     group: 'Charting & Price Action',   icon: 'M12 3a9 9 0 100 18A9 9 0 0012 3zM12 7v5l3 2', ready: true, allowMultiple: true },
   { id: 'volume-profile', label: 'Volume Profile',  description: 'VPOC',           group: 'Charting & Price Action',   icon: 'M3 4h6v16H3zM11 9h6v11h-6zM19 13h2v7h-2z', ready: true },
@@ -79,8 +85,11 @@ export const widgetCatalog = [
   { id: 'watchlist',      label: 'Watchlist',       description: 'Multi-segment',  group: 'Discovery & Market Intelligence',  icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2', ready: true },
   { id: 'live-scanner',   label: 'Live Scanner',    description: 'Preset scans',   group: 'Discovery & Market Intelligence',  icon: 'M21 21l-4.35-4.35M17 11A6 6 0 105 11a6 6 0 0012 0z', ready: true },
   { id: 'movers',         label: 'Movers & Trending',description: 'Gainers/Losers',group: 'Discovery & Market Intelligence',  icon: 'M23 6l-9.5 9.5-5-5L1 18M17 6h6v6', ready: true },
-  { id: 'heatmap',        label: 'Heatmap',         description: 'Sector grid',    group: 'Discovery & Market Intelligence',  icon: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z', ready: true },
-  { id: 'indices',        label: 'Indices',         description: 'Market indices', group: 'Discovery & Market Intelligence',  icon: 'M18 20V10M12 20V4M6 20v-6', ready: true },
+  { id: 'heatmap',        label: 'Heatmap',         description: 'SENSEX stock heatmap by sector', group: 'Discovery & Market Intelligence',  icon: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z', ready: true, tvWidget: true, allowMultiple: false, minWidth: 280, minHeight: 240, recommendedWidth: 480, recommendedHeight: 320 },
+  { id: 'indices',        label: 'Symbol',          description: 'BSE stocks and indices overview', group: 'Discovery & Market Intelligence',  icon: 'M18 20V10M12 20V4M6 20v-6', ready: true, tvWidget: true, allowMultiple: false, minWidth: 200, minHeight: 200, recommendedWidth: 320, recommendedHeight: 280 },
+  { id: 'etf-heatmap',   label: 'ETF Heatmap',     description: 'Indian ETFs by asset class',      group: 'Discovery & Market Intelligence',  icon: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z', ready: true, tvWidget: true, allowMultiple: false, minWidth: 280, minHeight: 240, recommendedWidth: 480, recommendedHeight: 320 },
+  { id: 'market-screeners', label: 'Market Screeners', description: 'India stock screener and filters', group: 'Discovery & Market Intelligence', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z', ready: true, tvWidget: true, allowMultiple: false, minWidth: 320, minHeight: 300, recommendedWidth: 600, recommendedHeight: 480 },
+  { id: 'symbol-overview',  label: 'Symbol Overview',  description: 'Detailed symbol research dashboard', group: 'Discovery & Market Intelligence', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2M3 21h2', ready: true, tvWidget: true, allowMultiple: false, minWidth: 320, minHeight: 400, recommendedWidth: 900, recommendedHeight: 900 },
 
   // Execution & Position Management
   { id: 'positions',      label: 'Positions & Orders',description: 'Open/Pending', group: 'Execution & Position Management',  icon: 'M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11', ready: true },

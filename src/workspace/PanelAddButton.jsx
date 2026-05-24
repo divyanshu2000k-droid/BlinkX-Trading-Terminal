@@ -13,7 +13,7 @@ export function PanelAddButton({ api, panels }) {
       }}
       title="Add widget to this panel"
     >
-      <Icon name="Plus" size={13} />
+      <Icon name="Plus" size={11} />
     </button>
   );
 }

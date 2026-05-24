@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { widgetCatalog, widgetGroups } from '../../workspace/widgetRegistry.js';
 import { useWorkspaceStore } from '../../stores/workspaceStore.js';
+import { Chip, Toggle } from '../../components/index.js';
+import { useUiStore } from '../../stores/uiStore';
 import styles from './WidgetPicker.module.css';
 
 export default function WidgetPicker() {
   const pickerOpen = useWorkspaceStore((s) => s.pickerOpen);
   const closePicker = useWorkspaceStore((s) => s.closePicker);
   const addWidget = useWorkspaceStore((s) => s.addWidget);
+  const tickerMode = useUiStore((s) => s.tickerMode);
+  const setTickerMode = useUiStore((s) => s.setTickerMode);
   const [search, setSearch] = useState('');
 
   if (!pickerOpen) return null;
@@ -64,15 +68,42 @@ export default function WidgetPicker() {
 
         {/* Widget groups */}
         <div className={styles.body}>
+          {!search && (
+            <>
+              <div className={styles.tickerSection}>
+                <div className={styles.tickerInfo}>
+                  <span className={styles.tickerLabel}>Ticker Strip</span>
+                  <span className={styles.tickerSubtitle}>Switch to TradingView live ticker tape</span>
+                </div>
+                <Toggle
+                  checked={tickerMode === 'tradingview'}
+                  onChange={(checked) => setTickerMode(checked ? 'tradingview' : 'blinkx')}
+                  size="sm"
+                />
+              </div>
+              <div className={styles.divider} />
+            </>
+          )}
           {grouped.map(group => (
             <div key={group.key} className={styles.group}>
               <div className={styles.groupLabel}>{group.label}</div>
               <div className={styles.grid}>
                 {group.items.map(widget => (
-                  <button
+                  <div
                     key={widget.id}
-                    className={styles.item}
-                    onClick={() => addWidget(widget.id, {})}
+                    role="button"
+                    tabIndex={0}
+                    className={[
+                      styles.item,
+                      !widget.ready ? styles.itemSoon : '',
+                    ].filter(Boolean).join(' ')}
+                    onClick={() => widget.ready && addWidget(widget.id, {})}
+                    onKeyDown={e => {
+                      if (widget.ready && (e.key === 'Enter' || e.key === ' ')) {
+                        e.preventDefault();
+                        addWidget(widget.id, {});
+                      }
+                    }}
                     title={widget.label}
                   >
                     <div className={styles.icon}>
@@ -84,7 +115,19 @@ export default function WidgetPicker() {
                       <div className={styles.itemName}>{widget.label}</div>
                       <div className={styles.itemSub}>{widget.description}</div>
                     </div>
-                  </button>
+
+                    {/* Soon badge — widget not yet ready */}
+                    {!widget.ready && (
+                      <span className={styles.soonBadge}>Soon</span>
+                    )}
+
+                    {/* Live badge — ready TV embed widget */}
+                    {widget.ready && widget.tvWidget && (
+                      <span className={styles.liveBadgeWrap}>
+                        <Chip size="sm" active>Live</Chip>
+                      </span>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

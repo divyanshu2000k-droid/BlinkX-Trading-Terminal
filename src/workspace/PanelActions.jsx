@@ -24,8 +24,13 @@ export default function PanelActions({ api, containerApi, panels }) {
   };
 
   const handleCloseGroup = () => {
-    // Snapshot panels before iterating — closing mutates the array
-    [...panels].forEach((panel) => panel.api.close());
+    console.log('panels prop:', panels);
+    // Prefer the prop; fall back to live api.panels if prop is empty
+    const activePanels = panels?.length > 0
+      ? panels
+      : api.panels ?? [];
+    // Snapshot before iterating — closing mutates the live array
+    [...activePanels].forEach((panel) => panel.api.close());
   };
 
   return (
@@ -35,14 +40,14 @@ export default function PanelActions({ api, containerApi, panels }) {
         onClick={handleMaximize}
         title={isMaximized ? 'Restore panel' : 'Maximize panel'}
       >
-        <Icon name={isMaximized ? 'Minimize2' : 'Maximize2'} size={13} />
+        <Icon name={isMaximized ? 'Minimize2' : 'Maximize2'} size={11} />
       </button>
       <button
         className={`${styles.iconBtn} ${styles.closeGroup}`}
         onClick={handleCloseGroup}
         title="Close panel"
       >
-        <Icon name="X" size={13} />
+        <Icon name="X" size={11} />
       </button>
     </div>
   );

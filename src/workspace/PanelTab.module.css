@@ -14,7 +14,11 @@
 }
 
 .tab.active {
-  border-bottom: 2px solid var(--blinkx-color-text-brand);
+  background: color-mix(
+    in srgb,
+    var(--blinkx-color-surface-card) 100%,
+    transparent
+  );
 }
 
 .dragHandle {
@@ -41,6 +45,7 @@
 
 .tab.active .label {
   color: var(--blinkx-color-text-primary);
+  font-weight: 500;
 }
 
 /* × IS HIDDEN BY DEFAULT */
@@ -51,8 +56,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: none;
   background: transparent;
   border-radius: var(--blinkx-radius-sm);

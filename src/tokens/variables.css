@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ═══════════════════════════════════════════════════
    BLINKX DESIGN SYSTEM V1.5 — CSS TOKENS
@@ -9,8 +10,8 @@
 :root {
   /* ── Typography ── */
   --blinkx-font-sans:    'Barlow', system-ui, sans-serif;
-  --blinkx-font-display: 'BlinkXSans New', 'Barlow', sans-serif;
-  --blinkx-font-mono:    'Barlow', monospace;
+  --blinkx-font-display: 'Barlow', system-ui, sans-serif;
+  --blinkx-font-mono:    'JetBrains Mono', 'Courier New', monospace;
 
   /* ── Typography scale ── */
   --blinkx-text-h1:       1.75rem;
@@ -129,6 +130,11 @@
   --blinkx-color-text-brand:             #171EFD;
   --blinkx-color-text-green:             #2BB02B;
   --blinkx-color-text-red:               #DD2006;
+  --blinkx-color-text-positive:          #2BB02B;
+  --blinkx-color-text-negative:          #DD2006;
+  --blinkx-color-text-warning:           #F0B22A;
+  --blinkx-color-surface-base:           #F2F2F2;
+  --blinkx-color-border-subtle:          #DDDDDD;
   --blinkx-color-text-on-disabled-cta:   #9D9D9D;
   --blinkx-color-text-white-on-cta:      #FFFFFF;
   --blinkx-color-text-on-segment-button: #171EFD;
@@ -232,6 +238,11 @@
   --blinkx-color-text-brand:             #4E54FD;
   --blinkx-color-text-green:             #48A848;
   --blinkx-color-text-red:               #CD4937;
+  --blinkx-color-text-positive:          #48A848;
+  --blinkx-color-text-negative:          #CD4937;
+  --blinkx-color-text-warning:           #F0B22A;
+  --blinkx-color-surface-base:           #0D0F14;
+  --blinkx-color-border-subtle:          #1F242C;
   --blinkx-color-text-on-disabled-cta:   #808081;
   --blinkx-color-text-white-on-cta:      #FFFFFF;
   --blinkx-color-text-on-segment-button: #8F93FE;

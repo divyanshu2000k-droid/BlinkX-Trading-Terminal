@@ -15,7 +15,7 @@ export default function PanelTab({ api, params }) {
   return (
     <div className={`${styles.tab} ${isActive ? styles.active : ''}`}>
       <span className={styles.dragHandle}>
-        <Icon name="GripVertical" size={12} />
+        <Icon name="GripVertical" size={10} />
       </span>
       <span className={styles.label}>
         {api.title ?? params?.widgetType ?? 'Widget'}
@@ -28,7 +28,7 @@ export default function PanelTab({ api, params }) {
         }}
         title="Close"
       >
-        <Icon name="X" size={11} />
+        <Icon name="X" size={10} />
       </button>
     </div>
   );

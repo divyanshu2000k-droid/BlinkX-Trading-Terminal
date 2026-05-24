@@ -30,8 +30,6 @@ export default function ChartWidget({ config = {} }) {
   }, []);
 
   useChart(containerRef, {
-    symbol:    config?.symbol    ?? 'NIFTY',
-    exchange:  config?.exchange  ?? 'NSE',
     timeframe: config?.timeframe ?? '15',
     widgetId:  id,
     theme:     observedTheme,

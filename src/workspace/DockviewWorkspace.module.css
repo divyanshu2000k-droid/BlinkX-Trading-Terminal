@@ -1,24 +1,61 @@
 .workspace {
   width: 100%;
   height: 100%;
-  position: relative;
+
+  /* ── Dockview → BlinkX token mapping ── */
+  --dv-background-color:
+    var(--blinkx-color-surface-page);
+
+  --dv-tabs-and-actions-container-background-color:
+    var(--blinkx-color-surface-page);
+
+  --dv-activegroup-visiblepanel-tab-background-color:
+    var(--blinkx-color-surface-card);
+
+  --dv-activegroup-hiddenpanel-tab-background-color:
+    var(--blinkx-color-surface-page);
+
+  --dv-inactivegroup-visiblepanel-tab-background-color:
+    var(--blinkx-color-surface-page);
+
+  --dv-inactivegroup-hiddenpanel-tab-background-color:
+    var(--blinkx-color-surface-page);
+
+  --dv-activegroup-visiblepanel-tab-color:
+    var(--blinkx-color-text-primary);
+
+  --dv-activegroup-hiddenpanel-tab-color:
+    var(--blinkx-color-text-secondary);
+
+  --dv-inactivegroup-visiblepanel-tab-color:
+    var(--blinkx-color-text-secondary);
+
+  --dv-inactivegroup-hiddenpanel-tab-color:
+    var(--blinkx-color-text-tertiary);
+
+  --dv-tab-divider-color:
+    var(--blinkx-color-stroke-subtle);
+
+  --dv-separator-border:
+    var(--blinkx-color-stroke-subtle);
+
+  --dv-paneview-header-border-color:
+    var(--blinkx-color-stroke-subtle);
+
+  --dv-drag-over-background-color:
+    rgba(78, 84, 253, 0.10);
+
+  --dv-drag-over-border-color:
+    var(--blinkx-color-stroke-brand);
+
+  --dv-tabs-and-actions-container-height: 28px;
+  --dv-tabs-and-actions-container-font-size:
+    var(--blinkx-text-body);
 }
 
-/* Map Dockview CSS variables to BlinkX design tokens */
-.workspace {
-  --dv-background-color: var(--blinkx-color-surface-page);
-  --dv-paneview-header-border-color: var(--blinkx-color-stroke-subtle);
-  --dv-tabs-and-actions-container-background-color: var(--blinkx-color-surface-elevated);
-  --dv-activegroup-visiblepanel-tab-background-color: var(--blinkx-color-surface-card);
-  --dv-activegroup-hiddenpanel-tab-background-color: var(--blinkx-color-surface-page);
-  --dv-inactivegroup-visiblepanel-tab-background-color: var(--blinkx-color-surface-card);
-  --dv-inactivegroup-hiddenpanel-tab-background-color: var(--blinkx-color-surface-page);
-  --dv-tab-divider-color: var(--blinkx-color-stroke-subtle);
-  --dv-activegroup-visiblepanel-tab-color: var(--blinkx-color-text-primary);
-  --dv-activegroup-hiddenpanel-tab-color: var(--blinkx-color-text-tertiary);
-  --dv-inactivegroup-visiblepanel-tab-color: var(--blinkx-color-text-secondary);
-  --dv-inactivegroup-hiddenpanel-tab-color: var(--blinkx-color-text-tertiary);
-  --dv-separator-border: var(--blinkx-color-stroke-subtle);
-  --dv-drag-over-background-color: hsla(228, 98%, 54%, 0.15);
-  --dv-drag-over-border-color: var(--blinkx-color-stroke-brand);
+:global(.dv-left-header-actions-container),
+:global(.dv-right-header-actions-container) {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }

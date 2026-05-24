@@ -628,6 +628,36 @@ src/providers/
 
 **Container ID**: each Chart instance gets a stable unique DOM ID via a module-level counter (`tv-chart-1`, `tv-chart-2`, …). This allows multiple Chart widgets to coexist without ID collisions.
 
+### iframe embed widget pattern
+
+For TradingView iframe embed widgets (NOT the Advanced Chart which uses tv.js):
+
+Use `createEmbedWidget()` from `src/providers/tradingview/createEmbedWidget.js`
+
+```
+Pattern:
+1. Widget hook imports createEmbedWidget
+2. Widget hook calls createEmbedWidget only
+   when panel becomes visible via
+   panelApi.onDidVisibilityChange
+3. Widget hook stores cleanup function in ref
+4. Widget hook re-runs when theme changes
+5. Widget component passes panelApi to hook
+```
+
+Config editing:
+- All symbol lists are named constants at the top of each widget's hook file
+- All colors come from `getTVTheme()` only — no hardcoded hex in widget code
+
+TradingView copyright:
+- Must remain visible per TradingView ToS
+- Style minimally — never `display: none`
+- `createEmbedWidget` handles copyright automatically
+
+`tvWidget: true` flag:
+- Set on any `widgetCatalog` entry that uses a TradingView embed
+- WidgetPicker renders a "Live" badge for these entries
+
 ---
 
 ## 19. `allowMultiple` Widget Flag

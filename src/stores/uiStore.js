@@ -3,6 +3,13 @@ import { create } from 'zustand';
 export const useUiStore = create((set, get) => ({
   theme: localStorage.getItem('blinkx-theme') || 'dark',
 
+  tickerMode: localStorage.getItem('blinkx-ticker-mode') ?? 'blinkx',
+
+  setTickerMode: (mode) => {
+    localStorage.setItem('blinkx-ticker-mode', mode);
+    set({ tickerMode: mode });
+  },
+
   setTheme: (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('blinkx-theme', theme);

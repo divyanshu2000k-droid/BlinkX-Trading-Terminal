@@ -1,11 +1,42 @@
-import styles from '../_placeholder/Placeholder.module.css';
+import { useRef, useState, useEffect } from 'react';
+import { useHeatmap } from './hooks/useHeatmap';
+import { useUiStore } from '../../stores/uiStore';
+import styles from './Widget.module.css';
 
-export default function HeatmapWidget({ widgetId, config = {}, density = 'full', panelApi }) {
+export default function HeatmapWidget({
+  widgetId,
+  config,
+  density,
+  panelApi,
+}) {
+  const theme = useUiStore(s => s.theme ?? 'dark');
+  const containerRef = useRef(null);
+
+  const [currentTheme, setCurrentTheme] = useState(theme);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const newTheme = document.documentElement
+        .getAttribute('data-theme') ?? 'dark';
+      setCurrentTheme(newTheme);
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  useHeatmap(containerRef, {
+    theme: currentTheme,
+  });
+
   return (
-    <div className={styles.placeholder}>
-      <span className={styles.name}>Heatmap</span>
-      <span className={styles.density}>{density}</span>
-      <span className={styles.widgetId}>{widgetId}</span>
+    <div className={styles.widget}>
+      <div
+        ref={containerRef}
+        className={styles.embedContainer}
+      />
     </div>
   );
 }
