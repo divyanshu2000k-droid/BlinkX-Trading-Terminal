@@ -30,6 +30,7 @@ import NewsEventsWidget from '../widgets/NewsEvents/index.jsx';
 import JMResearchWidget from '../widgets/JMResearch/index.jsx';
 import MarginCalcWidget from '../widgets/MarginCalc/index.jsx';
 import MarketTimingsWidget from '../widgets/MarketTimings/index.jsx';
+import NewsStoriesWidget from '../widgets/NewsStories/index.jsx';
 
 // Widget routing map — keys MUST match catalog `id` values (kebab-case)
 export const widgetRegistry = {
@@ -62,6 +63,7 @@ export const widgetRegistry = {
   'jm-research':      JMResearchWidget,
   'margin-calc':      MarginCalcWidget,
   'market-timings':   MarketTimingsWidget,
+  'news-stories':     NewsStoriesWidget,
 };
 
 // Widget catalog — full list of all widgets
@@ -107,6 +109,9 @@ export const widgetCatalog = [
   // Utility
   { id: 'margin-calc',    label: 'Calculator',      description: 'Lot / Margin',   group: 'Utility',  icon: 'M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zM8 10h8M8 14h8M8 6h.01M12 6h.01M16 6h.01', ready: true },
   { id: 'market-timings', label: 'Market Timings',  description: 'Session hours',  group: 'Utility',  icon: 'M12 3a9 9 0 100 18A9 9 0 0012 3zM12 7v5l4 2', ready: true },
+
+  // Risk & Information (continued)
+  { id: 'news-stories', label: 'News Stories', description: 'Live market news from TradingView', group: 'Risk & Information', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h6', ready: true, tvWidget: true, allowMultiple: false, minWidth: 200, minHeight: 300, recommendedWidth: 380, recommendedHeight: 600 },
 ];
 
 // Unique group labels in display order
