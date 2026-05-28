@@ -1,0 +1,56 @@
+.pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--blinkx-spacing-lg);
+  padding: var(--blinkx-spacing-lg) var(--blinkx-spacing-xl);
+  background: var(--blinkx-color-surface-card);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.sectionLabel {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--blinkx-color-stroke-subtle);
+}
+
+.exitBtn {
+  width: 100%;
+  height: 28px;
+  background: var(--blinkx-color-bg-sell-subtle);
+  color: var(--blinkx-color-text-negative);
+  border: 1px solid var(--blinkx-color-text-negative);
+  border-radius: var(--blinkx-radius-xs);
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 120ms ease;
+}
+.exitBtn:hover { opacity: 0.85; }
+.exitBtnDisabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.posCount {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+}

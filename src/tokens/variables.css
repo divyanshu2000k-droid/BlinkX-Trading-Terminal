@@ -118,6 +118,9 @@
   --blinkx-color-bg-buy-hover-sec-cta:  #F0FFF0;
   --blinkx-color-bg-buy-focus-ring:     #DCFFDC;
   --blinkx-color-bg-sell-default:       #DD2006;
+  --blinkx-color-bg-buy-subtle:         rgba(43,176,43,0.12);
+  --blinkx-color-bg-sell-subtle:        rgba(221,32,6,0.12);
+  --blinkx-overlay-scrim:               rgba(0,0,0,0.45);
 
   --blinkx-color-surface-page:     #FFFFFF;
   --blinkx-color-surface-card:     #F9F9F9;
@@ -226,6 +229,9 @@
   --blinkx-color-bg-buy-hover-sec-cta:  #1A2E1A;
   --blinkx-color-bg-buy-focus-ring:     #1E3A1E;
   --blinkx-color-bg-sell-default:       #CD4937;
+  --blinkx-color-bg-buy-subtle:         rgba(72,168,72,0.15);
+  --blinkx-color-bg-sell-subtle:        rgba(205,73,55,0.15);
+  --blinkx-overlay-scrim:               rgba(0,0,0,0.60);
 
   --blinkx-color-surface-page:     #0D0F14;
   --blinkx-color-surface-card:     #161A21;

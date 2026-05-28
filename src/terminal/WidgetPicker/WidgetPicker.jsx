@@ -121,8 +121,8 @@ export default function WidgetPicker() {
                       <span className={styles.soonBadge}>Soon</span>
                     )}
 
-                    {/* Live badge — ready TV embed widget */}
-                    {widget.ready && widget.tvWidget && (
+                    {/* Live badge — widget is ready */}
+                    {widget.ready && (
                       <span className={styles.liveBadgeWrap}>
                         <Chip size="sm" active>Live</Chip>
                       </span>

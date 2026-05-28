@@ -1,0 +1,163 @@
+.pad {
+  display: flex;
+  flex-direction: column;
+  gap: var(--blinkx-spacing-sm);
+  padding: var(--blinkx-spacing-lg) var(--blinkx-spacing-xl);
+  background: var(--blinkx-color-surface-card);
+}
+
+/* Bid/Ask row */
+.bidAskRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--blinkx-spacing-sm);
+}
+
+.baItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.baLabel {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.baValue {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-body);
+  font-weight: 600;
+  color: var(--blinkx-color-text-primary);
+}
+.baValueBid { color: var(--blinkx-color-text-negative); }
+.baValueAsk { color: var(--blinkx-color-text-positive); }
+
+.spread {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Lots row */
+.lotsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--blinkx-spacing-sm);
+}
+
+.lotsLabel {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  color: var(--blinkx-color-text-secondary);
+  flex: 1;
+}
+
+.lotsControl {
+  display: flex;
+  align-items: center;
+  gap: var(--blinkx-spacing-xs);
+}
+
+.lotsBtn {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--blinkx-radius-xs);
+  border: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-overlay);
+  color: var(--blinkx-color-text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  font-family: var(--blinkx-font-mono);
+  transition: background 120ms ease;
+}
+.lotsBtn:hover { background: var(--blinkx-color-stroke-subtle); }
+
+.lotsValue {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-body);
+  font-weight: 600;
+  color: var(--blinkx-color-text-primary);
+  min-width: 20px;
+  text-align: center;
+}
+
+.qtyHint {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+}
+
+/* Trade buttons */
+.tradeRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--blinkx-spacing-sm);
+}
+
+.buyBtn, .sellBtn {
+  height: 32px;
+  border: none;
+  border-radius: var(--blinkx-radius-xs);
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 120ms ease;
+}
+.buyBtn:hover, .sellBtn:hover { opacity: 0.88; }
+
+.buyBtn {
+  background: var(--blinkx-color-bg-buy-subtle);
+  color: var(--blinkx-color-text-positive);
+  border: 1px solid var(--blinkx-color-text-positive);
+}
+.sellBtn {
+  background: var(--blinkx-color-bg-sell-subtle);
+  color: var(--blinkx-color-text-negative);
+  border: 1px solid var(--blinkx-color-text-negative);
+}
+
+/* Margin row */
+.marginRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.marginLabel {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+}
+
+.marginValue {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+.marginValue:hover .marginAmount { color: var(--blinkx-color-text-brand); }
+
+.marginAmount {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label);
+  color: var(--blinkx-color-text-secondary);
+}
+
+.marginInfo {
+  color: var(--blinkx-color-icon-secondary);
+}

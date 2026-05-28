@@ -1,0 +1,48 @@
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--blinkx-color-surface-elevated);
+  padding: var(--blinkx-spacing-sm) 0;
+  gap: var(--blinkx-spacing-sm);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.tfLabel {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+  letter-spacing: 0.04em;
+  user-select: none;
+  padding: var(--blinkx-spacing-sm) 0;
+}
+
+.dotWrap {
+  margin-top: auto;
+  padding-bottom: var(--blinkx-spacing-sm);
+}
+
+.railBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--blinkx-radius-xs);
+  border: none;
+  background: transparent;
+  color: var(--blinkx-color-icon-secondary);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.railBtn:hover {
+  background: var(--blinkx-color-surface-overlay);
+  color: var(--blinkx-color-icon-primary);
+}
+.railBtnActive {
+  color: var(--blinkx-color-icon-brand);
+}

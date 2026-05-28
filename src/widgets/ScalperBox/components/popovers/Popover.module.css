@@ -1,0 +1,114 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+.popover {
+  position: fixed;
+  z-index: 1000;
+  background: var(--blinkx-color-surface-elevated);
+  border: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  border-radius: var(--blinkx-radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  min-width: 180px;
+  max-height: 360px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--blinkx-spacing-lg) var(--blinkx-spacing-xl);
+  border-bottom: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  font-weight: 600;
+  color: var(--blinkx-color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--blinkx-radius-xs);
+  color: var(--blinkx-color-icon-secondary);
+  transition: background 120ms ease;
+}
+.closeBtn:hover {
+  background: var(--blinkx-color-surface-overlay);
+  color: var(--blinkx-color-icon-primary);
+}
+
+.body {
+  padding: var(--blinkx-spacing-sm) 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--blinkx-spacing-sm) var(--blinkx-spacing-xl);
+  cursor: pointer;
+  transition: background 100ms ease;
+  gap: var(--blinkx-spacing-lg);
+}
+.item:hover { background: var(--blinkx-color-surface-overlay); }
+
+.itemLabel {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  color: var(--blinkx-color-text-primary);
+}
+
+.itemSub {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+}
+
+.itemSelected {
+  background: var(--blinkx-color-bg-brand-subtle-1);
+}
+.itemSelected .itemLabel { color: var(--blinkx-color-text-brand); font-weight: 600; }
+
+.checkMark {
+  color: var(--blinkx-color-text-brand);
+  flex-shrink: 0;
+}
+
+.groupLabel {
+  padding: var(--blinkx-spacing-sm) var(--blinkx-spacing-xl);
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label-sm);
+  color: var(--blinkx-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.searchInput {
+  width: 100%;
+  padding: var(--blinkx-spacing-sm) var(--blinkx-spacing-xl);
+  background: none;
+  border: none;
+  border-bottom: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  color: var(--blinkx-color-text-primary);
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  outline: none;
+}
+.searchInput::placeholder { color: var(--blinkx-color-text-tertiary); }

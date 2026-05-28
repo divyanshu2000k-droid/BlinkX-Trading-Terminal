@@ -1,0 +1,89 @@
+.bar {
+  display: flex;
+  flex-direction: column;
+  padding: var(--blinkx-spacing-sm) var(--blinkx-spacing-xl);
+  background: var(--blinkx-color-surface-card);
+  border-bottom: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  flex-shrink: 0;
+  gap: 2px;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: var(--blinkx-spacing-sm);
+}
+
+.strikePill {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label);
+  font-weight: 600;
+  color: var(--blinkx-color-text-primary);
+  background: var(--blinkx-color-surface-overlay);
+  border: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  border-radius: var(--blinkx-radius-xs);
+  padding: 1px var(--blinkx-spacing-sm);
+  cursor: pointer;
+  transition: background 120ms ease;
+  white-space: nowrap;
+}
+.strikePill:hover { background: var(--blinkx-color-stroke-subtle); }
+
+.strikePillCall {
+  border-color: var(--blinkx-color-text-positive);
+  color: var(--blinkx-color-text-positive);
+}
+.strikePillPut {
+  border-color: var(--blinkx-color-text-negative);
+  color: var(--blinkx-color-text-negative);
+}
+
+.moneynessTag {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label-sm);
+  padding: 1px 4px;
+  border-radius: var(--blinkx-radius-xs);
+  background: var(--blinkx-color-surface-overlay);
+  color: var(--blinkx-color-text-tertiary);
+  white-space: nowrap;
+}
+.moneynessATM {
+  background: var(--blinkx-color-bg-brand-subtle-1);
+  color: var(--blinkx-color-text-brand);
+}
+
+.ltpRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--blinkx-spacing-sm);
+}
+
+.ltpLabel {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-body);
+  font-weight: 600;
+  color: var(--blinkx-color-text-primary);
+}
+
+.chgLabel {
+  font-family: var(--blinkx-font-mono);
+  font-size: var(--blinkx-text-label);
+}
+.chgPos { color: var(--blinkx-color-text-positive); }
+.chgNeg { color: var(--blinkx-color-text-negative); }
+
+.symLabel {
+  font-family: var(--blinkx-font-sans);
+  font-size: var(--blinkx-text-label);
+  font-weight: 600;
+  color: var(--blinkx-color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.chevron {
+  color: var(--blinkx-color-icon-secondary);
+  flex-shrink: 0;
+}

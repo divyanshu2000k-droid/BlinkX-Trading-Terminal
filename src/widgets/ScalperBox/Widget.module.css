@@ -1,0 +1,107 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--blinkx-color-surface-card);
+  font-family: var(--blinkx-font-sans);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/*
+  scalperBody uses CSS grid.
+  Grid columns are set via inline style
+  computed from showCall/showSpot/showPut
+  booleans in index.jsx.
+  This allows any combination of 7 possible
+  column visibility states.
+*/
+.scalperBody {
+  flex: 1;
+  display: grid;
+  gap: 1px;
+  background: var(--blinkx-color-stroke-subtle);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.widgetHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--blinkx-spacing-2xl);
+  height: 32px;
+  flex-shrink: 0;
+  border-bottom: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-elevated);
+}
+
+.whLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--blinkx-spacing-xl);
+  min-width: 0;
+}
+
+.whRight {
+  display: flex;
+  align-items: center;
+  gap: var(--blinkx-spacing-xs);
+}
+
+.linkDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--blinkx-radius-full);
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+}
+.linkDotBlue   { background: var(--blinkx-color-text-brand);    }
+.linkDotGreen  { background: var(--blinkx-color-text-positive); }
+.linkDotYellow { background: var(--blinkx-color-text-warning);  }
+.linkDotRed    { background: var(--blinkx-color-text-negative); }
+.linkDotOff    { background: var(--blinkx-color-text-tertiary); }
+
+.widgetTitle {
+  font-size: var(--blinkx-text-body);
+  font-weight: 600;
+  color: var(--blinkx-color-text-primary);
+  white-space: nowrap;
+}
+
+.widgetSubtitle {
+  font-size: var(--blinkx-text-label);
+  color: var(--blinkx-color-text-tertiary);
+  font-family: var(--blinkx-font-mono);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--blinkx-radius-xs);
+  border: none;
+  background: transparent;
+  color: var(--blinkx-color-icon-secondary);
+  cursor: pointer;
+  transition: background var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.iconBtn:hover {
+  background: var(--blinkx-color-surface-overlay);
+  color: var(--blinkx-color-icon-primary);
+}
+
+/* Density */
+.root[data-density="compact"] .widgetSubtitle { display: none; }
+.root[data-density="mini"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
