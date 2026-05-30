@@ -1,0 +1,42 @@
+.btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+
+/* default variant — border + bg */
+.default {
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  color: var(--blinkx-color-text-tertiary);
+}
+.default:hover {
+  color: var(--blinkx-color-text-secondary);
+  border-color: var(--blinkx-color-stroke-brand);
+}
+.default.active {
+  color: var(--blinkx-color-text-brand);
+  background: var(--blinkx-color-bg-brand-subtle-1);
+  border-color: var(--blinkx-color-stroke-brand);
+}
+
+/* ghost variant — no border, no bg */
+.ghost {
+  background: none;
+  border: none;
+  color: var(--blinkx-color-text-tertiary);
+}
+.ghost:hover {
+  color: var(--blinkx-color-text-primary);
+  background: var(--blinkx-color-surface-overlay);
+}
+.ghost.active {
+  color: var(--blinkx-color-text-brand);
+  background: var(--blinkx-color-bg-brand-subtle-1);
+}

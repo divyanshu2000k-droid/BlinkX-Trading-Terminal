@@ -1,63 +1,73 @@
 import { useState } from 'react';
-import { mock } from '../../mock.js';
-import { formatPercent } from '../../../../primitives';
-import { Popover, popoverStyles as styles } from './Popover.jsx';
+import { formatINR, formatPercent } from '../../../../primitives/index.js';
+import { Popover } from './Popover.jsx';
+import styles from './Popover.module.css';
 
-export default function ScripPopover({ selected, onSelect, anchorRect, onClose }) {
-  const [search, setSearch] = useState('');
+export function ScripPopover({
+  isOpen, anchor, onClose,
+  instruments, selectedSym, onSelect,
+}) {
+  const [query, setQuery] = useState('');
 
-  const allInstruments = [
-    ...mock.instruments.benchmarks,
-    ...mock.instruments.eqFno,
-    ...mock.instruments.commodities,
-  ];
+  const filter = items => {
+    if (!query.trim()) return items ?? [];
+    const q = query.toLowerCase();
+    return (items ?? []).filter(i =>
+      i.sym.toLowerCase().includes(q) ||
+      i.name.toLowerCase().includes(q)
+    );
+  };
 
-  const groups = [
-    { label: 'Benchmarks',  items: mock.instruments.benchmarks  },
-    { label: 'EQ F&O',      items: mock.instruments.eqFno       },
-    { label: 'Commodities', items: mock.instruments.commodities },
-  ];
-
-  const q = search.trim().toLowerCase();
-  const filtered = q
-    ? [{ label: 'Results', items: allInstruments.filter(i =>
-        i.sym.toLowerCase().includes(q) || i.name.toLowerCase().includes(q))
-      }]
-    : groups;
+  const Section = ({ label, items }) => {
+    const filtered = filter(items);
+    if (!filtered.length) return null;
+    return (
+      <>
+        <div className={styles.secLabel}>{label}</div>
+        {filtered.map(inst => {
+          const isPos = (inst.chgPct ?? 0) >= 0;
+          const isSel = inst.sym === selectedSym;
+          return (
+            <div
+              key={inst.sym}
+              className={`${styles.row}${isSel ? ` ${styles.rowSelected}` : ''}`}
+              onClick={() => { onSelect(inst); onClose(); }}
+            >
+              <span className={styles.rowLabel}>
+                <strong className={styles.rowLabelBold}>{inst.sym}</strong>
+              </span>
+              <span className={isPos ? styles.rowMetaPos : styles.rowMetaNeg}>
+                {formatINR(inst.ltp)} · {formatPercent(inst.chgPct)}
+              </span>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
 
   return (
-    <Popover title="Select Scrip" anchorRect={anchorRect} onClose={onClose} width={240}>
-      <input
-        className={styles.searchInput}
-        placeholder="Search symbol…"
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-        autoFocus
-      />
-      {filtered.map(group => (
-        <div key={group.label}>
-          <div className={styles.groupLabel}>{group.label}</div>
-          {group.items.map(inst => {
-            const isSelected = selected?.sym === inst.sym;
-            const chgClass = inst.chgPct >= 0 ? '' : '';
-            return (
-              <div
-                key={inst.sym}
-                className={`${styles.item} ${isSelected ? styles.itemSelected : ''}`}
-                onClick={() => onSelect(inst)}
-              >
-                <div>
-                  <div className={styles.itemLabel}>{inst.sym}</div>
-                  <div className={styles.itemSub}>{inst.name}</div>
-                </div>
-                <span className={`${styles.itemSub}`}>
-                  {formatPercent(inst.chgPct)}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      ))}
+    <Popover
+      id="scrip"
+      title="Select Instrument"
+      isOpen={isOpen}
+      anchor={anchor}
+      onClose={onClose}
+      width={260}
+    >
+      <div className={styles.searchRow}>
+        <input
+          className={styles.searchInput}
+          type="text"
+          placeholder="Search…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          autoFocus
+        />
+      </div>
+      <Section label="Benchmarks"  items={instruments?.benchmarks}  />
+      <Section label="Equity F&O"  items={instruments?.eqFno}       />
+      <Section label="Commodities" items={instruments?.commodities} />
     </Popover>
   );
 }

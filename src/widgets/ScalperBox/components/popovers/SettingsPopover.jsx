@@ -1,30 +1,39 @@
-import { Toggle } from '../../../../components';
-import { Popover, popoverStyles as styles } from './Popover.jsx';
+import { Toggle } from '../../../../components/index.js';
+import { Popover } from './Popover.jsx';
+import styles from './Popover.module.css';
 
-const SETTINGS_ITEMS = [
-  { key: 'showJMMarkers',        label: 'JM Research markers' },
-  { key: 'showPositionMarkers',  label: 'Position markers on chart' },
-  { key: 'showHotkeyHints',      label: 'Hotkey hints' },
-  { key: 'confirmBeforePlacing', label: 'Confirm before placing order' },
-];
+export function SettingsPopover({
+  isOpen, anchor, onClose,
+  settings, onSettingsChange,
+}) {
+  const toggle = key =>
+    onSettingsChange({ [key]: !settings?.[key] });
 
-export default function SettingsPopover({ settings, onUpdate, anchorRect, onClose }) {
+  const ToggleRow = ({ label, settingKey }) => (
+    <div className={`${styles.row} ${styles.rowNoPointer}`}>
+      <span className={styles.rowLabel}>{label}</span>
+      <Toggle
+        checked={!!settings?.[settingKey]}
+        onChange={() => toggle(settingKey)}
+      />
+    </div>
+  );
+
   return (
-    <Popover title="Settings" anchorRect={anchorRect} onClose={onClose} width={240}>
-      {SETTINGS_ITEMS.map(({ key, label }) => (
-        <div
-          key={key}
-          className={styles.item}
-          style={{ cursor: 'default', justifyContent: 'space-between' }}
-        >
-          <span className={styles.itemLabel}>{label}</span>
-          <Toggle
-            checked={settings[key] ?? false}
-            onChange={val => onUpdate({ [key]: val })}
-            size="sm"
-          />
-        </div>
-      ))}
+    <Popover
+      id="settings"
+      title="Pro Scalper Settings"
+      isOpen={isOpen}
+      anchor={anchor}
+      onClose={onClose}
+      width={260}
+    >
+      <div className={styles.secLabel}>Display</div>
+      <ToggleRow label="Show JM Research markers"          settingKey="showJMMarkers" />
+      <ToggleRow label="Show position markers on charts"   settingKey="showPositionMarkers" />
+      <ToggleRow label="Show hotkey hints in buttons"      settingKey="showHotkeyHints" />
+      <div className={styles.secLabel}>Order Defaults</div>
+      <ToggleRow label="Confirm before placing"            settingKey="confirmBeforePlacing" />
     </Popover>
   );
 }

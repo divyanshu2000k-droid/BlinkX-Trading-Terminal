@@ -1,29 +1,44 @@
-import { Popover, popoverStyles as styles } from './Popover.jsx';
-import { Icon } from '../../../../components';
+import { Popover } from './Popover.jsx';
+import styles from './Popover.module.css';
 
-export default function ExpiryPopover({ expiries, selected, onSelect, anchorRect, onClose }) {
-  return (
-    <Popover title="Select Expiry" anchorRect={anchorRect} onClose={onClose} width={200}>
-      {expiries.map(exp => {
-        const isSelected = selected?.label === exp.label;
-        return (
-          <div
-            key={exp.label}
-            className={`${styles.item} ${isSelected ? styles.itemSelected : ''}`}
-            onClick={() => onSelect(exp)}
-          >
-            <div>
-              <div className={styles.itemLabel}>{exp.fullLabel}</div>
-              <div className={styles.itemSub}>{exp.dte}D · {exp.type}</div>
+export function ExpiryPopover({
+  isOpen, anchor, onClose,
+  expiries, selectedExpiry, onSelect,
+}) {
+  const Section = ({ label, type }) => {
+    const items = (expiries ?? []).filter(e => e.type === type);
+    if (!items.length) return null;
+    return (
+      <>
+        <div className={styles.secLabel}>{label}</div>
+        {items.map(exp => {
+          const isSel = exp.label === selectedExpiry?.label;
+          return (
+            <div
+              key={exp.label}
+              className={`${styles.row}${isSel ? ` ${styles.rowSelected}` : ''}`}
+              onClick={() => { onSelect(exp); onClose(); }}
+            >
+              <span className={styles.rowLabel}>{exp.fullLabel}</span>
+              <span className={styles.rowMeta}>{exp.dte}d</span>
             </div>
-            {isSelected && (
-              <span className={styles.checkMark}>
-                <Icon name="Check" size={12} />
-              </span>
-            )}
-          </div>
-        );
-      })}
+          );
+        })}
+      </>
+    );
+  };
+
+  return (
+    <Popover
+      id="expiry"
+      title="Select Expiry"
+      isOpen={isOpen}
+      anchor={anchor}
+      onClose={onClose}
+      width={220}
+    >
+      <Section label="Weekly"  type="weekly" />
+      <Section label="Monthly" type="monthly" />
     </Popover>
   );
 }

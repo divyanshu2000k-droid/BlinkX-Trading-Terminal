@@ -1,89 +1,81 @@
-.bar {
-  display: flex;
-  flex-direction: column;
-  padding: var(--blinkx-spacing-sm) var(--blinkx-spacing-xl);
-  background: var(--blinkx-color-surface-card);
-  border-bottom: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+.topBar {
+  height: 32px;
   flex-shrink: 0;
-  gap: 2px;
-}
-
-.topRow {
+  background: var(--blinkx-color-surface-elevated);
+  border-bottom: 1px solid var(--blinkx-color-stroke-subtle);
   display: flex;
   align-items: center;
-  gap: var(--blinkx-spacing-sm);
+  padding: 0 10px;
+  gap: 8px;
+  overflow: hidden;
 }
 
-.strikePill {
-  display: flex;
-  align-items: center;
-  gap: 3px;
+/* Symbol name — color per leg */
+.name {
   font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label);
-  font-weight: 600;
-  color: var(--blinkx-color-text-primary);
-  background: var(--blinkx-color-surface-overlay);
-  border: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
-  border-radius: var(--blinkx-radius-xs);
-  padding: 1px var(--blinkx-spacing-sm);
-  cursor: pointer;
-  transition: background 120ms ease;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
-.strikePill:hover { background: var(--blinkx-color-stroke-subtle); }
+.nameCall { color: var(--blinkx-color-text-positive); }
+.namePut  { color: var(--blinkx-color-text-negative); }
+.nameSpot { color: var(--blinkx-color-text-primary); }
 
-.strikePillCall {
-  border-color: var(--blinkx-color-text-positive);
-  color: var(--blinkx-color-text-positive);
-}
-.strikePillPut {
-  border-color: var(--blinkx-color-text-negative);
-  color: var(--blinkx-color-text-negative);
-}
-
-.moneynessTag {
-  font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label-sm);
-  padding: 1px 4px;
-  border-radius: var(--blinkx-radius-xs);
-  background: var(--blinkx-color-surface-overlay);
+/* Moneyness badge */
+.moneyness {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
   color: var(--blinkx-color-text-tertiary);
   white-space: nowrap;
 }
-.moneynessATM {
-  background: var(--blinkx-color-bg-brand-subtle-1);
-  color: var(--blinkx-color-text-brand);
-}
+.moneynessAtm { color: var(--blinkx-color-text-brand); }
+.moneynessItm { color: var(--blinkx-color-text-warning); }
+.moneynessOtm { color: var(--blinkx-color-text-tertiary); }
 
-.ltpRow {
-  display: flex;
-  align-items: baseline;
-  gap: var(--blinkx-spacing-sm);
-}
-
-.ltpLabel {
+/* LTP value */
+.ltp {
   font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-body);
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--blinkx-color-text-primary);
+  white-space: nowrap;
 }
 
-.chgLabel {
+/* Change value */
+.chg {
   font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label);
+  font-size: 10.5px;
+  white-space: nowrap;
 }
 .chgPos { color: var(--blinkx-color-text-positive); }
 .chgNeg { color: var(--blinkx-color-text-negative); }
 
-.symLabel {
-  font-family: var(--blinkx-font-sans);
-  font-size: var(--blinkx-text-label);
-  font-weight: 600;
-  color: var(--blinkx-color-text-secondary);
-  letter-spacing: 0.04em;
-}
-
-.chevron {
-  color: var(--blinkx-color-icon-secondary);
+/* SPOT/FUT toggle — right-aligned in spot column */
+.spotToggle {
+  display: flex;
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-left: auto;
   flex-shrink: 0;
+}
+.spotToggleBtn {
+  padding: 3px 8px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--blinkx-color-text-tertiary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+  text-transform: uppercase;
+}
+.spotToggleBtnActive {
+  background: var(--blinkx-color-surface-card);
+  color: var(--blinkx-color-text-primary);
 }

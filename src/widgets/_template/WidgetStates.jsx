@@ -4,7 +4,7 @@ import styles from './WidgetStates.module.css';
 export function WidgetLoading() {
   return (
     <div className={styles.stateContainer}>
-      <Loading size={20} />
+      <Loading size="md" />
     </div>
   );
 }

@@ -1,163 +1,347 @@
+/* Container — fixed 200px */
 .pad {
-  display: flex;
-  flex-direction: column;
-  gap: var(--blinkx-spacing-sm);
-  padding: var(--blinkx-spacing-lg) var(--blinkx-spacing-xl);
+  flex-shrink: 0;
   background: var(--blinkx-color-surface-card);
-}
-
-/* Bid/Ask row */
-.bidAskRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--blinkx-spacing-sm);
-}
-
-.baItem {
+  border-top: 1px solid var(--blinkx-color-stroke-subtle);
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
+  gap: 7px;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* Row 1 — Strike + badge + quick pills */
+.padHeader {
+  display: flex;
   align-items: center;
-  flex: 1;
+  gap: 6px;
 }
 
-.baLabel {
-  font-family: var(--blinkx-font-sans);
-  font-size: var(--blinkx-text-label-sm);
+.strikeBtn {
+  font-family: var(--blinkx-font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blinkx-color-text-primary);
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  transition: border-color var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.strikeBtn:hover {
+  border-color: var(--blinkx-color-stroke-brand);
+}
+.strikeBtnChevron {
   color: var(--blinkx-color-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-size: 9px;
+  line-height: 1;
 }
 
+/* CE / PE badge */
+.legBadgeCall {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--blinkx-color-text-positive);
+  background: var(--blinkx-color-bg-buy-subtle);
+  border: 1px solid var(--blinkx-color-text-positive);
+  flex-shrink: 0;
+}
+.legBadgePut {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--blinkx-color-text-negative);
+  background: var(--blinkx-color-bg-sell-subtle);
+  border: 1px solid var(--blinkx-color-text-negative);
+  flex-shrink: 0;
+}
+
+/* Quick strike pills */
+.quickPills {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  justify-content: flex-end;
+}
+.qPill {
+  font-family: var(--blinkx-font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 2px 5px;
+  border-radius: 2px;
+  border: 1px solid var(--blinkx-color-stroke-subtle);
+  background: var(--blinkx-color-surface-overlay);
+  color: var(--blinkx-color-text-tertiary);
+  cursor: pointer;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+  white-space: nowrap;
+}
+.qPill:hover {
+  color: var(--blinkx-color-text-primary);
+  border-color: var(--blinkx-color-stroke-default);
+}
+.qPillActive {
+  background: var(--blinkx-color-bg-brand-subtle-1);
+  border-color: var(--blinkx-color-stroke-brand);
+  color: var(--blinkx-color-text-brand);
+}
+
+/* Row 2 — BID / ASK — 3-col grid: bid | spacer | ask */
+.bidAskRow {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 5px;
+  align-items: center;
+}
+.bidSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+.askSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+.baLabel {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--blinkx-color-text-tertiary);
+}
 .baValue {
   font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-body);
-  font-weight: 600;
-  color: var(--blinkx-color-text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blinkx-color-text-positive);
 }
-.baValueBid { color: var(--blinkx-color-text-negative); }
-.baValueAsk { color: var(--blinkx-color-text-positive); }
 
-.spread {
+/* Row 3 — BUY | lots | SELL — 3-col grid */
+.tradeRow {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 5px;
+  align-items: stretch;
+}
+
+.buyBtn {
+  background: var(--blinkx-color-bg-buy-default);
+  color: var(--blinkx-color-text-white-on-cta);
+  border: none;
+  border-radius: 5px;
+  padding: 11px 0;
+  font-family: var(--blinkx-font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  transition: opacity var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.buyBtn:hover { opacity: 0.88; }
+
+.sellBtn {
+  background: var(--blinkx-color-bg-sell-default);
+  color: var(--blinkx-color-text-white-on-cta);
+  border: none;
+  border-radius: 5px;
+  padding: 11px 0;
+  font-family: var(--blinkx-font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  transition: opacity var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.sellBtn:hover { opacity: 0.88; }
+
+/* Hotkey hint inside BUY/SELL button */
+.hkHint {
   font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label-sm);
+  font-size: 9px;
+  font-weight: 600;
+  opacity: 0.80;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.hkKey {
+  background: var(--blinkx-color-glass-white-subtle);
+  border-radius: 3px;
+  padding: 0 4px;
+  font-size: 10px;
+}
+
+/* Lots block */
+.lotsBlock {
+  display: flex;
+  flex-direction: column;
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.qtyDesc {
+  font-family: var(--blinkx-font-mono);
+  font-size: 9px;
+  color: var(--blinkx-color-text-tertiary);
+  text-align: center;
+  padding: 3px 4px 1px;
+  letter-spacing: 0.3px;
+}
+.qtyDescVal {
+  color: var(--blinkx-color-text-secondary);
+  font-weight: 600;
+}
+.lotsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.lotsBtn {
+  width: 22px;
+  height: 24px;
+  background: none;
+  border: none;
+  color: var(--blinkx-color-text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.lotsBtn:hover {
+  color: var(--blinkx-color-text-primary);
+  background: var(--blinkx-color-surface-card);
+}
+.lotsInput {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  background: none;
+  border: none;
+  color: var(--blinkx-color-text-primary);
+  font-family: var(--blinkx-font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+  width: 36px;
+}
+
+/* Row 4 — Margin values */
+.marginRow {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 5px;
+}
+.marginVal {
+  font-family: var(--blinkx-font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--blinkx-color-text-warning);
+  text-align: center;
+  padding: 4px 0;
+  cursor: pointer;
+  border-radius: 3px;
+  background: var(--blinkx-color-surface-elevated);
+  border: 1px solid var(--blinkx-color-stroke-subtle);
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.marginVal:hover {
+  background: var(--blinkx-color-surface-overlay);
+  border-color: var(--blinkx-color-stroke-default);
+}
+/* Info icon inside margin val — 9×9px */
+.marginInfoIcon {
+  width: 9px;
+  height: 9px;
   color: var(--blinkx-color-text-tertiary);
   flex-shrink: 0;
 }
 
-/* Lots row */
-.lotsRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--blinkx-spacing-sm);
-}
-
-.lotsLabel {
-  font-family: var(--blinkx-font-sans);
-  font-size: var(--blinkx-text-label);
-  color: var(--blinkx-color-text-secondary);
-  flex: 1;
-}
-
-.lotsControl {
-  display: flex;
-  align-items: center;
-  gap: var(--blinkx-spacing-xs);
-}
-
-.lotsBtn {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--blinkx-radius-xs);
-  border: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
-  background: var(--blinkx-color-surface-overlay);
-  color: var(--blinkx-color-text-primary);
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  font-family: var(--blinkx-font-mono);
-  transition: background 120ms ease;
-}
-.lotsBtn:hover { background: var(--blinkx-color-stroke-subtle); }
-
-.lotsValue {
-  font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-body);
-  font-weight: 600;
-  color: var(--blinkx-color-text-primary);
-  min-width: 20px;
-  text-align: center;
-}
-
-.qtyHint {
-  font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label-sm);
-  color: var(--blinkx-color-text-tertiary);
-}
-
-/* Trade buttons */
-.tradeRow {
+/* Row 5 — Order type + Product type */
+.otRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--blinkx-spacing-sm);
+  gap: 5px;
 }
 
-.buyBtn, .sellBtn {
-  height: 32px;
-  border: none;
-  border-radius: var(--blinkx-radius-xs);
+/*
+  Using native <select> elements here.
+  The shared Dropdown component renders
+  too large for the 200px fixed pad height.
+  Replace with compact Dropdown variant
+  when available in component library.
+*/
+.padSelect {
+  appearance: none;
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  border-radius: 4px;
+  color: var(--blinkx-color-text-primary);
   font-family: var(--blinkx-font-sans);
-  font-size: var(--blinkx-text-label);
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 18px 5px 8px;
   cursor: pointer;
-  letter-spacing: 0.04em;
-  transition: opacity 120ms ease;
+  /* Chevron SVG — acceptable exception per RULE A (data URI cannot use CSS vars) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%236B7280'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--blinkx-duration-fast) var(--blinkx-ease-default);
 }
-.buyBtn:hover, .sellBtn:hover { opacity: 0.88; }
-
-.buyBtn {
-  background: var(--blinkx-color-bg-buy-subtle);
-  color: var(--blinkx-color-text-positive);
-  border: 1px solid var(--blinkx-color-text-positive);
+.padSelect:hover {
+  border-color: var(--blinkx-color-stroke-brand);
 }
-.sellBtn {
-  background: var(--blinkx-color-bg-sell-subtle);
-  color: var(--blinkx-color-text-negative);
-  border: 1px solid var(--blinkx-color-text-negative);
-}
-
-/* Margin row */
-.marginRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.padSelect:focus {
+  border-color: var(--blinkx-color-stroke-brand);
 }
 
-.marginLabel {
-  font-family: var(--blinkx-font-sans);
-  font-size: var(--blinkx-text-label-sm);
-  color: var(--blinkx-color-text-tertiary);
+/* Responsive — via CSS targeting data-width-class on ScalperColumn */
+:global([data-width-class="narrow"]) .quickPills {
+  display: none;
 }
-
-.marginValue {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  cursor: pointer;
-  transition: color 120ms ease;
+:global([data-width-class="narrow"]) .buyBtn,
+:global([data-width-class="narrow"]) .sellBtn {
+  padding: 9px 0;
+  font-size: 11px;
 }
-.marginValue:hover .marginAmount { color: var(--blinkx-color-text-brand); }
-
-.marginAmount {
-  font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label);
-  color: var(--blinkx-color-text-secondary);
+:global([data-width-class="narrow"]) .hkHint {
+  display: none;
 }
-
-.marginInfo {
-  color: var(--blinkx-color-icon-secondary);
+:global([data-width-class="very-narrow"]) .otRow {
+  display: none;
 }

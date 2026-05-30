@@ -1,69 +1,57 @@
-import { formatPercent } from '../../../../primitives';
+import { Undo2, Redo2, Keyboard } from 'lucide-react';
+import { IconButton } from '../../../../components/index.js';
 import { TIMEFRAMES } from '../../config/chargesConfig.js';
 import styles from './MasterToolbar.module.css';
 
-export default function MasterToolbar({ state, actions, marketData, onOpenPopover }) {
-  const { underlying, selectedExpiry, timeframe, showCall, showSpot, showPut, spotMode, oiProfileEnabled } = state;
-  const chgPct = underlying?.chgPct ?? 0;
-  const chgClass = chgPct >= 0 ? styles.pillChgPos : styles.pillChgNeg;
+export default function MasterToolbar({
+  state,
+  actions,
+  marketData,
+  onOpenPopover,
+}) {
+  const {
+    underlying,
+    selectedExpiry,
+    timeframe,
+    showCall,
+    showSpot,
+    showPut,
+  } = state;
 
   return (
     <div className={styles.toolbar}>
-      {/* Scrip pill */}
-      <button className={styles.pill} onClick={e => onOpenPopover('scrip', e)}>
-        {underlying?.sym ?? '—'}
-        <span className={`${styles.pillChg} ${chgClass}`}>
-          {formatPercent(chgPct)}
+
+      {/* Scrip pill — symbol + expiry, two independent click zones */}
+      <div className={styles.scripPill}>
+        <span
+          className={styles.scripName}
+          onClick={e => {
+            e.stopPropagation();
+            onOpenPopover('scrip', e);
+          }}
+        >
+          {underlying?.sym ?? '—'}
         </span>
-      </button>
-
-      {/* Expiry pill */}
-      <button className={styles.pill} onClick={e => onOpenPopover('expiry', e)}>
-        {selectedExpiry?.label ?? '—'}
-      </button>
-
-      <div className={styles.divider} />
-
-      {/* CE / SPOT / PE independent toggle buttons */}
-      <div className={styles.sideGroup}>
-        <button
-          className={`${styles.sideBtn} ${styles.sideBtnCall} ${showCall ? styles.sideBtnActive : ''}`}
-          onClick={actions.toggleCall}
-          title="Toggle CE column (key: 1)"
+        <span
+          className={styles.scripExp}
+          onClick={e => {
+            e.stopPropagation();
+            onOpenPopover('expiry', e);
+          }}
         >
-          CE
-        </button>
-        <button
-          className={`${styles.sideBtn} ${styles.sideBtnSpot} ${showSpot ? styles.sideBtnActive : ''}`}
-          onClick={actions.toggleSpot}
-          title="Toggle SPOT column (key: 2)"
-        >
-          SPOT
-        </button>
-        <button
-          className={`${styles.sideBtn} ${styles.sideBtnPut} ${showPut ? styles.sideBtnActive : ''}`}
-          onClick={actions.togglePut}
-          title="Toggle PE column (key: 3)"
-        >
-          PE
-        </button>
-        <button
-          className={styles.sideBtn}
-          onClick={actions.showAll}
-          title="Show all columns (key: 0)"
-        >
-          ALL
-        </button>
+          {selectedExpiry?.label ?? '—'}
+          <span className={styles.scripChevron}>▾</span>
+        </span>
       </div>
 
-      <div className={styles.divider} />
+      <div className={styles.sep} />
 
       {/* Timeframe buttons */}
       <div className={styles.tfGroup}>
         {TIMEFRAMES.map(tf => (
           <button
             key={tf}
-            className={`${styles.tfBtn} ${timeframe === tf ? styles.tfBtnActive : ''}`}
+            className={`${styles.tfBtn}${timeframe === tf ? ` ${styles.tfBtnActive}` : ''}`}
             onClick={() => actions.setTimeframe(tf)}
           >
             {tf}
@@ -71,25 +59,57 @@ export default function MasterToolbar({ state, actions, marketData, onOpenPopove
         ))}
       </div>
 
-      <div className={styles.divider} />
+      <div className={styles.sep} />
 
-      {/* Spot / Fut mode */}
+      {/* CE / SPOT / PE independent toggles */}
+      <div className={styles.sideGroup}>
+        <button
+          className={`${styles.sideBtn} ${styles.sideBtnCall}${showCall ? ` ${styles.sideBtnActive}` : ''}`}
+          onClick={() => actions.toggleCall()}
+        >
+          CE
+        </button>
+        <button
+          className={`${styles.sideBtn} ${styles.sideBtnSpot}${showSpot ? ` ${styles.sideBtnActive}` : ''}`}
+          onClick={() => actions.toggleSpot()}
+        >
+          SPOT
+        </button>
+        <button
+          className={`${styles.sideBtn} ${styles.sideBtnPut}${showPut ? ` ${styles.sideBtnActive}` : ''}`}
+          onClick={() => actions.togglePut()}
+        >
+          PE
+        </button>
+      </div>
+
+      {/* ALL convenience button */}
       <button
-        className={`${styles.modeBtn} ${spotMode === 'fut' ? styles.modeBtnActive : ''}`}
-        onClick={() => actions.setSpotMode(spotMode === 'spot' ? 'fut' : 'spot')}
-        title="Toggle Spot / Futures"
+        className={styles.allBtn}
+        onClick={() => actions.showAll()}
       >
-        {spotMode === 'fut' ? 'FUT' : 'SPT'}
+        ALL
       </button>
 
-      {/* OI Profile toggle */}
+      <div className={styles.sep} />
+
+      {/* Undo — fires toast in Phase 2 */}
+      <IconButton icon={Undo2} size={14} title="Undo" onClick={() => {}} variant="ghost" />
+
+      {/* Redo */}
+      <IconButton icon={Redo2} size={14} title="Redo" onClick={() => {}} variant="ghost" />
+
+      <div className={styles.spacer} />
+
+      {/* Hotkeys popover trigger */}
       <button
-        className={`${styles.oiBtn} ${oiProfileEnabled ? styles.oiBtnActive : ''}`}
-        onClick={actions.toggleOIProfile}
-        title="Toggle OI Profile overlay"
+        className={styles.hotkeysBtn}
+        onClick={e => onOpenPopover('hotkeys', e)}
       >
-        OI
+        <Keyboard size={11} />
+        Hotkeys
       </button>
+
     </div>
   );
 }

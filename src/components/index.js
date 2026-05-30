@@ -14,3 +14,4 @@ export { default as Input }      from './Input/Input.jsx';
 export { default as Tabs }       from './Tabs/Tabs.jsx';
 export { default as Dropdown }   from './Dropdown/Dropdown.jsx';
 export { default as Tooltip }    from './Tooltip/Tooltip.jsx';
+export { default as IconButton } from './IconButton/IconButton.jsx';

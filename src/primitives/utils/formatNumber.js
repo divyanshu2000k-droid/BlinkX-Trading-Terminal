@@ -50,8 +50,30 @@ export function formatPct(value, decimals = 2) {
   return formatPercent(value, decimals);
 }
 
-export function formatChange(value, decimals = 2) {
-  if (value == null || isNaN(value)) return '—';
-  const sign = value > 0 ? '+' : '';
-  return sign + formatNumber(value, { decimals });
+/**
+ * formatChange
+ * Formats absolute + percent change
+ * for display in price change cells.
+ * @param {number} abs — absolute change
+ *   e.g. 18.20 or -6.50
+ * @param {number} pct — percent change
+ *   e.g. 0.63 or -0.37
+ * @returns {string}
+ *   e.g. "+18.20 (+0.63%)"
+ *   e.g. "-6.50 (-0.37%)"
+ */
+export function formatChange(abs, pct) {
+  if (abs == null || isNaN(abs)) return '—';
+  const absSign  = abs >= 0 ? '+' : '';
+  const pctSign  = (pct ?? 0) >= 0 ? '+' : '';
+  const absStr   = Math.abs(abs)
+    .toLocaleString('en-IN', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  const pctStr = pct != null && !isNaN(pct)
+    ? ` (${pctSign}${Number(pct)
+        .toFixed(2)}%)`
+    : '';
+  return `${absSign}${absStr}${pctStr}`;
 }

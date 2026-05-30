@@ -1,6 +1,9 @@
 import { useReducer, useCallback } from 'react';
 import { mock } from '../mock.js';
 
+const _first = mock.instruments.benchmarks[0];
+const _initialAtm = Math.round(_first.ltp / _first.strikeStep) * _first.strikeStep;
+
 const initialState = {
   underlying:     mock.instruments.benchmarks[0],
   expiries:       mock.expiries,
@@ -11,8 +14,8 @@ const initialState = {
   showSpot: true,
   showPut:  true,
 
-  callStrike:  null,
-  putStrike:   null,
+  callStrike:  _initialAtm,
+  putStrike:   _initialAtm,
   callLots:    1,
   putLots:     1,
   spotMode:    'spot',

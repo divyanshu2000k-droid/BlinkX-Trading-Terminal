@@ -186,6 +186,23 @@
   --blinkx-badge-etf:      #6B7280;
   --blinkx-badge-etf-bg:   rgba(107,114,128,0.1);
   --blinkx-badge-etf-line: rgba(107,114,128,0.3);
+
+  /* ── JM purple tokens ── */
+  --blinkx-color-text-jm:      #8B7CF8;
+  --blinkx-color-bg-jm-subtle: rgba(139,124,248,0.12);
+  --blinkx-color-bg-jm-hover:  rgba(139,124,248,0.20);
+  --blinkx-color-stroke-jm:    rgba(139,124,248,0.30);
+
+  /* ── Warn (amber) semantic tokens ── */
+  --blinkx-color-bg-warn-subtle:     rgba(240,178,42,0.10);
+  --blinkx-color-bg-warn-hover:      rgba(240,178,42,0.18);
+  --blinkx-color-stroke-warning:     rgba(240,178,42,0.28);
+
+  /* ── Sell hover (stronger than sell-subtle) ── */
+  --blinkx-color-bg-sell-hover:      rgba(221,32,6,0.20);
+
+  /* ── Glass overlay for text on colored buttons ── */
+  --blinkx-color-glass-white-subtle: rgba(255,255,255,0.18);
 }
 
 /* ════════════════════════════════════════════
@@ -268,6 +285,23 @@
   --blinkx-color-stroke-disabled:   #4D4F52;
   --blinkx-color-stroke-focus-ring: #1E2145;
   --blinkx-color-stroke-toggle:     #2A3038;
+
+  /* ── JM purple tokens ── */
+  --blinkx-color-text-jm:      #8B7CF8;
+  --blinkx-color-bg-jm-subtle: rgba(139,124,248,0.12);
+  --blinkx-color-bg-jm-hover:  rgba(139,124,248,0.20);
+  --blinkx-color-stroke-jm:    rgba(139,124,248,0.30);
+
+  /* ── Warn (amber) semantic tokens ── */
+  --blinkx-color-bg-warn-subtle:     rgba(240,178,42,0.10);
+  --blinkx-color-bg-warn-hover:      rgba(240,178,42,0.18);
+  --blinkx-color-stroke-warning:     rgba(240,178,42,0.28);
+
+  /* ── Sell hover (stronger than sell-subtle) ── */
+  --blinkx-color-bg-sell-hover:      rgba(205,73,55,0.20);
+
+  /* ── Glass overlay for text on colored buttons ── */
+  --blinkx-color-glass-white-subtle: rgba(255,255,255,0.18);
 
   --blinkx-shadow-xs:   0 1px 2px rgba(10,13,16,0.06);
   --blinkx-shadow-sm:   0 2px 4px rgba(10,13,16,0.12);

@@ -1,60 +1,67 @@
-import { useMarginCalc } from '../../hooks/useMarginCalc.js';
-import { formatINR } from '../../../../primitives';
-import { Popover, popoverStyles as styles } from './Popover.jsx';
+import { formatINR } from '../../../../primitives/index.js';
+import { Popover } from './Popover.jsx';
+import styles from './Popover.module.css';
 
-function Row({ label, value }) {
+function Row({ label, value, bold, indent, muted }) {
   return (
-    <div className={styles.item} style={{ cursor: 'default' }}>
-      <span className={styles.itemLabel}>{label}</span>
-      <span className={styles.itemSub} style={{ fontFamily: 'var(--blinkx-font-mono)' }}>
-        {value != null ? `₹${formatINR(value)}` : '—'}
+    <div className={`${styles.mbRow}${bold ? ` ${styles.mbRowBold}` : ''}`}>
+      <span className={`${styles.mbLabel}${
+        indent === 1 ? ` ${styles.mbLabelIndent1}` : ''
+      }${
+        indent === 2 ? ` ${styles.mbLabelIndent2}` : ''
+      }`}>
+        {label}
+      </span>
+      <span className={`${styles.mbVal}${muted ? ` ${styles.mbValMuted}` : ''}`}>
+        {value}
       </span>
     </div>
   );
 }
 
-export default function MarginPopover({ leg, action, lots, ltp, lotSize, underlyingLtp, anchorRect, onClose }) {
-  const calc = useMarginCalc({ leg, action, lots, ltp, lotSize, underlyingLtp });
+export function MarginPopover({
+  isOpen, anchor, onClose,
+  leg, action, marginData,
+}) {
+  const title = `Charges Breakup · ${(action ?? '').toUpperCase()} ${(leg ?? '').toUpperCase()}`;
+
+  if (!marginData?.isReady) {
+    return (
+      <Popover id="margin" title={title} isOpen={isOpen} anchor={anchor} onClose={onClose} width={280}>
+        <div className={styles.mbRow}>
+          <span className={styles.mbLabel}>Select strike and lots first.</span>
+        </div>
+      </Popover>
+    );
+  }
+
+  const m = marginData;
 
   return (
-    <Popover title="Charges Breakdown" anchorRect={anchorRect} onClose={onClose} width={240}>
-      {calc.isReady ? (
-        <>
-          <Row label="Qty" value={null} />
-          <div className={styles.item} style={{ cursor: 'default' }}>
-            <span className={styles.itemLabel}>Qty</span>
-            <span className={styles.itemSub} style={{ fontFamily: 'var(--blinkx-font-mono)' }}>
-              {calc.qty}
-            </span>
-          </div>
-          <Row label="Trade Value"       value={calc.tradeValue}         />
-          <Row label="Brokerage"         value={calc.brokerage}          />
-          <Row label="Transaction Chg"   value={calc.transactionCharge}  />
-          <Row label="GST"               value={calc.gst}                />
-          <Row label="STT"               value={calc.stt}                />
-          <Row label="Stamp Duty"        value={calc.stampDuty}          />
-          <div
-            className={styles.item}
-            style={{
-              cursor: 'default',
-              borderTop: 'var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle)',
-              marginTop: 'var(--blinkx-spacing-xs)',
-            }}
-          >
-            <span className={styles.itemLabel} style={{ fontWeight: 600 }}>Total Charges</span>
-            <span
-              className={styles.itemSub}
-              style={{ fontFamily: 'var(--blinkx-font-mono)', fontWeight: 600, color: 'var(--blinkx-color-text-primary)' }}
-            >
-              ₹{formatINR(calc.totalCharges)}
-            </span>
-          </div>
-        </>
-      ) : (
-        <div className={styles.item} style={{ cursor: 'default' }}>
-          <span className={styles.itemSub}>Select strike and lots first.</span>
-        </div>
-      )}
+    <Popover id="margin" title={title} isOpen={isOpen} anchor={anchor} onClose={onClose} width={280}>
+      <Row label="Quantity" value={m.qty} />
+      <Row
+        label={action === 'buy' ? 'Trade value (Required)' : 'Margin blocked (SPAN+Exposure)'}
+        value={formatINR(m.tradeValue)}
+      />
+      <Row label="Estimated Charges" value={formatINR(m.totalCharges)} bold />
+      <Row label="Brokerage" value={formatINR(m.brokerage)} indent={1} muted />
+      <Row
+        label="Charges & Taxes"
+        value={formatINR(m.transactionCharge + m.gst + m.stt + m.stampDuty)}
+        bold indent={1}
+      />
+      <Row label="Transaction Charges" value={formatINR(m.transactionCharge)} indent={2} muted />
+      <Row label="Clearing Charges"    value={formatINR(m.clearingCharge)}    indent={2} muted />
+      <Row label="SEBI Turnover"       value={formatINR(m.sebiTurnover)}      indent={2} muted />
+      <Row label="Investor Protection" value={formatINR(m.investorProtection)} indent={2} muted />
+      <Row label="GST"                 value={formatINR(m.gst)}               indent={2} muted />
+      <Row label="STT / CTT"          value={formatINR(m.stt)}               indent={2} muted />
+      <Row label="State Stamp Duty"   value={formatINR(m.stampDuty)}        indent={2} muted />
+      <div className={styles.mbDisclaimer}>
+        <span className={styles.mbDisclaimerBold}>Disclaimer:</span>
+        {' '}Charges calculated above are on approximate basis. Actual charges for the completed order may differ.
+      </div>
     </Popover>
   );
 }

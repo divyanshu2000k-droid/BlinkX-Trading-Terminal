@@ -1,8 +1,10 @@
-import ChartTopBar  from '../ChartTopBar/ChartTopBar.jsx';
-import MiniChart    from '../MiniChart/MiniChart.jsx';
-import RangeBar     from '../RangeBar/RangeBar.jsx';
-import OrderPad     from '../OrderPad/OrderPad.jsx';
-import CenterPad    from '../CenterPad/CenterPad.jsx';
+import { useRef, useEffect } from 'react';
+import { useMarginCalc } from '../../hooks/useMarginCalc.js';
+import ChartTopBar from '../ChartTopBar/ChartTopBar.jsx';
+import MiniChart   from '../MiniChart/MiniChart.jsx';
+import RangeBar    from '../RangeBar/RangeBar.jsx';
+import OrderPad    from '../OrderPad/OrderPad.jsx';
+import CenterPad   from '../CenterPad/CenterPad.jsx';
 import styles from './ScalperColumn.module.css';
 
 export default function ScalperColumn({
@@ -14,84 +16,165 @@ export default function ScalperColumn({
   allPnl,
   onTrade,
   density,
-  popoverAnchors,
   onOpenPopover,
 }) {
+  const colRef = useRef(null);
+
+  // ResizeObserver — sets data-width-class on column div.
+  // Mandatory cleanup (RULE C).
+  useEffect(() => {
+    if (!colRef.current) return;
+    const el = colRef.current;
+    const observer = new ResizeObserver(entries => {
+      for (const entry of entries) {
+        const w = entry.contentRect.width;
+        if (w < 180 && w > 0) {
+          el.setAttribute('data-width-class', 'very-narrow');
+        } else if (w < 240 && w > 0) {
+          el.setAttribute('data-width-class', 'narrow');
+        } else {
+          el.removeAttribute('data-width-class');
+        }
+      }
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const isCall = leg === 'call';
+  const isPut  = leg === 'put';
   const isSpot = leg === 'spot';
 
-  const candles = leg === 'call'
-    ? marketData.callCandles
-    : leg === 'put'
-      ? marketData.putCandles
-      : marketData.spotCandles;
+  const strike = isCall ? state.callStrike : state.putStrike;
+  const lots   = isCall ? state.callLots   : state.putLots;
 
-  const ltp = leg === 'call'
+  const ltp = isCall
     ? marketData.callLtp
-    : leg === 'put'
+    : isPut
       ? marketData.putLtp
       : marketData.spotLtp;
 
-  const high = candles.length ? Math.max(...candles.map(c => c.high)) : null;
-  const low  = candles.length ? Math.min(...candles.map(c => c.low))  : null;
+  const bid = isCall ? marketData.callBid : marketData.putBid;
+  const ask = isCall ? marketData.callAsk : marketData.putAsk;
 
-  const labelClass = leg === 'call'
-    ? styles.labelCall
-    : leg === 'put'
-      ? styles.labelPut
-      : styles.labelSpot;
+  const candles = isCall
+    ? marketData.callCandles
+    : isPut
+      ? marketData.putCandles
+      : marketData.spotCandles;
 
-  const labelText = leg === 'call' ? 'CE' : leg === 'put' ? 'PE' : 'SPOT';
+  const moneyness = isCall
+    ? marketData.callMoneyness
+    : isPut
+      ? marketData.putMoneyness
+      : null;
+
+  const chgAbs = isCall
+    ? marketData.callChgAbs
+    : isPut
+      ? marketData.putChgAbs
+      : marketData.spotChgAbs;
+
+  const chgPct = isCall
+    ? marketData.callChgPct
+    : isPut
+      ? marketData.putChgPct
+      : marketData.spotChgPct;
+
+  const symbol = isSpot
+    ? state.underlying?.name ?? '—'
+    : `${state.underlying?.sym ?? '—'} ${strike ?? '—'} ${isCall ? 'CALL' : 'PUT'}`;
+
+  // useMarginCalc — called unconditionally at top level (RULE D).
+  // For spot column: ltp is null so isReady will be false — safe.
+  const buyMargin = useMarginCalc({
+    leg,
+    action:        'buy',
+    lots:          lots ?? 1,
+    ltp:           isSpot ? null : ltp,
+    lotSize:       state.underlying?.lot,
+    underlyingLtp: state.underlying?.ltp,
+  });
+  const sellMargin = useMarginCalc({
+    leg,
+    action:        'sell',
+    lots:          lots ?? 1,
+    ltp:           isSpot ? null : ltp,
+    lotSize:       state.underlying?.lot,
+    underlyingLtp: state.underlying?.ltp,
+  });
+
+  const openPopover = (id, e) => onOpenPopover?.(id, e);
 
   return (
-    <div className={styles.column}>
-      {/* Column type header */}
-      <div className={styles.colHeader}>
-        <span className={`${styles.colLabel} ${labelClass}`}>{labelText}</span>
-      </div>
+    <div ref={colRef} className={styles.column}>
 
-      {/* Chart top bar with LTP + strike info */}
       <ChartTopBar
         leg={leg}
-        state={state}
-        actions={actions}
-        marketData={marketData}
-        onOpenPopover={onOpenPopover}
-        density={density}
+        symbol={symbol}
+        moneyness={moneyness}
+        ltp={ltp}
+        chgAbs={chgAbs}
+        chgPct={chgPct}
+        spotMode={state.spotMode}
+        onSpotModeChange={isSpot ? actions.setSpotMode : undefined}
       />
 
-      {/* Mini candlestick chart */}
-      <div className={styles.chartArea}>
-        <MiniChart candles={candles} />
-      </div>
+      <MiniChart
+        leg={leg}
+        candles={candles}
+        ltp={ltp}
+        positions={state.positions}
+        showJMMarkers={state.settings.showJMMarkers}
+        showPositionMarkers={state.settings.showPositionMarkers}
+        onTrade={isSpot ? null : onTrade}
+        onOpenJM={e => openPopover(`jm-${leg}`, e)}
+      />
 
-      {/* Day range bar */}
-      {ltp != null && high != null && low != null && (
-        <RangeBar ltp={ltp} high={high} low={low} />
+      <RangeBar
+        activeTimeframe={state.timeframe}
+        onTimeframeChange={actions.setTimeframe}
+        onCalendarClick={() => actions.setActivePopover(null)}
+      />
+
+      {isSpot ? (
+        <CenterPad
+          underlying={state.underlying}
+          selectedExpiry={state.selectedExpiry}
+          scalperPnl={scalperPnl}
+          allPnl={allPnl}
+          onExitAll={() => actions.exitAllPositions()}
+          onCancelAll={() => {}}
+          onOpenSearch={e => openPopover('scrip', e)}
+          onOpenExpiry={e => openPopover('expiry', e)}
+        />
+      ) : (
+        <OrderPad
+          leg={leg}
+          strike={strike}
+          strikeList={marketData.strikeList}
+          atmStrike={marketData.atmStrike}
+          lots={lots}
+          ltp={ltp}
+          bid={bid}
+          ask={ask}
+          moneyness={moneyness}
+          lotSize={state.underlying?.lot}
+          buyMargin={buyMargin}
+          sellMargin={sellMargin}
+          settings={state.settings}
+          onTrade={onTrade}
+          onLotsChange={isCall ? actions.setCallLots : actions.setPutLots}
+          onStrikeChange={isCall ? actions.setCallStrike : actions.setPutStrike}
+          onOpenStrike={e =>
+            onOpenPopover?.(isCall ? 'strike-call' : 'strike-put', e)
+          }
+          onOpenMargin={(action, e) =>
+            onOpenPopover?.(`margin-${leg}-${action}`, e)
+          }
+        />
       )}
 
-      {/* Order pad or center pad */}
-      <div className={styles.padArea}>
-        {isSpot ? (
-          <CenterPad
-            state={state}
-            actions={actions}
-            marketData={marketData}
-            scalperPnl={scalperPnl}
-            allPnl={allPnl}
-            onOpenPopover={onOpenPopover}
-          />
-        ) : (
-          <OrderPad
-            leg={leg}
-            state={state}
-            actions={actions}
-            marketData={marketData}
-            onTrade={onTrade}
-            onOpenPopover={onOpenPopover}
-            density={density}
-          />
-        )}
-      </div>
     </div>
   );
 }

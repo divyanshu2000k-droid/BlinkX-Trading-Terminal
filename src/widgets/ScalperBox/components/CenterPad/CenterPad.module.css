@@ -1,56 +1,172 @@
+/* Container — fixed 200px */
 .pad {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--blinkx-spacing-lg);
-  padding: var(--blinkx-spacing-lg) var(--blinkx-spacing-xl);
+  flex-shrink: 0;
   background: var(--blinkx-color-surface-card);
-}
-
-.section {
+  border-top: 1px solid var(--blinkx-color-stroke-subtle);
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* Row 1 — Search + expiry */
+.searchRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5px;
+}
+
+.searchWrap {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--blinkx-color-text-tertiary);
+  pointer-events: none;
+  display: flex;
   align-items: center;
-  gap: 2px;
-  width: 100%;
 }
 
-.sectionLabel {
+.searchInput {
+  width: 100%;
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  border-radius: 4px;
+  color: var(--blinkx-color-text-primary);
   font-family: var(--blinkx-font-sans);
-  font-size: var(--blinkx-text-label-sm);
-  color: var(--blinkx-color-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.divider {
-  width: 100%;
-  height: 1px;
-  background: var(--blinkx-color-stroke-subtle);
-}
-
-.exitBtn {
-  width: 100%;
-  height: 28px;
-  background: var(--blinkx-color-bg-sell-subtle);
-  color: var(--blinkx-color-text-negative);
-  border: 1px solid var(--blinkx-color-text-negative);
-  border-radius: var(--blinkx-radius-xs);
-  font-family: var(--blinkx-font-sans);
-  font-size: var(--blinkx-text-label);
-  font-weight: 700;
+  font-size: 11px;
+  padding: 5px 8px 5px 26px;
+  outline: none;
   cursor: pointer;
-  letter-spacing: 0.04em;
-  transition: opacity 120ms ease;
+  transition: border-color var(--blinkx-duration-fast) var(--blinkx-ease-default);
 }
-.exitBtn:hover { opacity: 0.85; }
-.exitBtnDisabled {
-  opacity: 0.4;
-  cursor: default;
+.searchInput:focus {
+  border-color: var(--blinkx-color-stroke-brand);
+}
+.searchInput::placeholder {
+  color: var(--blinkx-color-text-tertiary);
 }
 
-.posCount {
+.expiryBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  border-radius: 4px;
+  color: var(--blinkx-color-text-secondary);
   font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label-sm);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0 9px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.expiryBtn:hover {
+  border-color: var(--blinkx-color-stroke-brand);
+  color: var(--blinkx-color-text-primary);
+}
+.expiryChevron {
+  font-size: 8px;
   color: var(--blinkx-color-text-tertiary);
+}
+
+/* Row 2 — P&L hero */
+.pnlHero {
+  text-align: center;
+}
+.pnlLabel {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--blinkx-color-text-tertiary);
+  margin-bottom: 2px;
+}
+/*
+  PnLValue primitive renders the value.
+  Override font size to 22px via className
+  — font-size on outer span inherits down.
+*/
+.pnlValue {
+  font-family: var(--blinkx-font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Row 3 — Stat columns */
+.statCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.statCol {
+  background: var(--blinkx-color-surface-elevated);
+  border: 1px solid var(--blinkx-color-stroke-subtle);
+  border-radius: 4px;
+  padding: 7px 8px;
+  text-align: center;
+}
+.statColLabel {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--blinkx-color-text-tertiary);
+  margin-bottom: 3px;
+}
+.statColValue {
+  font-family: var(--blinkx-font-mono);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Row 4 — Actions pushed to bottom */
+.actionsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-top: auto;
+}
+
+/* Exit All — danger style */
+.dangerBtn {
+  padding: 7px 0;
+  background: var(--blinkx-color-bg-sell-subtle);
+  border: 1px solid var(--blinkx-color-text-negative);
+  border-radius: 4px;
+  color: var(--blinkx-color-text-negative);
+  font-family: var(--blinkx-font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.dangerBtn:hover {
+  background: var(--blinkx-color-bg-sell-hover);
+}
+
+/* Cancel All — warn style */
+.warnBtn {
+  padding: 7px 0;
+  background: var(--blinkx-color-bg-warn-subtle);
+  border: 1px solid var(--blinkx-color-stroke-warning);
+  border-radius: 4px;
+  color: var(--blinkx-color-text-warning);
+  font-family: var(--blinkx-font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--blinkx-duration-fast) var(--blinkx-ease-default);
+}
+.warnBtn:hover {
+  background: var(--blinkx-color-bg-warn-hover);
 }

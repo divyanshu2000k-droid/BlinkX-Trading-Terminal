@@ -1,18 +1,33 @@
-import { formatINR } from '../../../../primitives';
+import { Calendar } from 'lucide-react';
+import { TIMEFRAMES } from '../../config/chargesConfig.js';
 import styles from './RangeBar.module.css';
 
-export default function RangeBar({ ltp, high, low }) {
-  const range = high - low || 1;
-  const pct   = Math.max(0, Math.min(1, (ltp - low) / range));
-
+export default function RangeBar({
+  activeTimeframe,
+  onTimeframeChange,
+  onCalendarClick,
+}) {
   return (
-    <div className={styles.wrap}>
-      <span className={styles.low}>{formatINR(low)}</span>
-      <div className={styles.track}>
-        <div className={styles.fill} style={{ width: `${pct * 100}%` }} />
-        <div className={styles.thumb} style={{ left: `${pct * 100}%` }} />
-      </div>
-      <span className={styles.high}>{formatINR(high)}</span>
+    <div className={styles.rangeBar}>
+      {TIMEFRAMES.map(tf => (
+        <button
+          key={tf}
+          className={`${styles.rbBtn}${activeTimeframe === tf ? ` ${styles.rbBtnActive}` : ''}`}
+          onClick={() => onTimeframeChange?.(tf)}
+        >
+          {tf}
+        </button>
+      ))}
+
+      <span className={styles.spacer} />
+
+      <button
+        className={styles.calBtn}
+        onClick={() => onCalendarClick?.()}
+        title="Custom date range"
+      >
+        <Calendar size={11} />
+      </button>
     </div>
   );
 }

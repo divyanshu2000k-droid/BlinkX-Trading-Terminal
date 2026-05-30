@@ -1,44 +1,54 @@
-.wrap {
+.rangeBar {
+  height: 28px;
+  flex-shrink: 0;
+  background: var(--blinkx-color-surface-elevated);
+  border-top: 1px solid var(--blinkx-color-stroke-subtle);
   display: flex;
   align-items: center;
-  gap: var(--blinkx-spacing-sm);
-  padding: var(--blinkx-spacing-xs) var(--blinkx-spacing-xl);
-  flex-shrink: 0;
-  border-top: var(--blinkx-stroke-default) solid var(--blinkx-color-stroke-subtle);
+  padding: 0 8px;
+  gap: 2px;
+  overflow: hidden;
 }
 
-.low, .high {
+.rbBtn {
   font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label-sm);
+  font-size: 10px;
+  font-weight: 600;
   color: var(--blinkx-color-text-tertiary);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 3px 7px;
+  border-radius: 3px;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
   white-space: nowrap;
+}
+.rbBtn:hover {
+  color: var(--blinkx-color-text-secondary);
+  background: var(--blinkx-color-surface-overlay);
+}
+.rbBtnActive {
+  color: var(--blinkx-color-text-brand);
+  background: var(--blinkx-color-bg-brand-subtle-1);
+}
+
+.spacer { flex: 1; }
+
+.calBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 22px;
+  background: var(--blinkx-color-surface-overlay);
+  border: 1px solid var(--blinkx-color-stroke-default);
+  border-radius: 3px;
+  color: var(--blinkx-color-text-secondary);
+  cursor: pointer;
   flex-shrink: 0;
+  transition: all var(--blinkx-duration-fast) var(--blinkx-ease-default);
 }
-
-.track {
-  flex: 1;
-  height: 3px;
-  background: var(--blinkx-color-stroke-subtle);
-  border-radius: var(--blinkx-radius-full);
-  position: relative;
-}
-
-.fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: var(--blinkx-color-text-brand);
-  border-radius: var(--blinkx-radius-full);
-}
-
-.thumb {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 6px;
-  height: 6px;
-  border-radius: var(--blinkx-radius-full);
-  background: var(--blinkx-color-text-primary);
-  border: 1px solid var(--blinkx-color-surface-card);
+.calBtn:hover {
+  color: var(--blinkx-color-text-primary);
+  border-color: var(--blinkx-color-stroke-brand);
 }

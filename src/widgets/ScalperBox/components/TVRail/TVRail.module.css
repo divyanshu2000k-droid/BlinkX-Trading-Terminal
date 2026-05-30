@@ -2,47 +2,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2px;
+  padding: 6px 0;
   background: var(--blinkx-color-surface-elevated);
-  padding: var(--blinkx-spacing-sm) 0;
-  gap: var(--blinkx-spacing-sm);
   overflow: hidden;
-  min-height: 0;
+  flex-shrink: 0;
 }
 
-.tfLabel {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  font-family: var(--blinkx-font-mono);
-  font-size: var(--blinkx-text-label-sm);
-  color: var(--blinkx-color-text-tertiary);
-  letter-spacing: 0.04em;
-  user-select: none;
-  padding: var(--blinkx-spacing-sm) 0;
-}
-
-.dotWrap {
-  margin-top: auto;
-  padding-bottom: var(--blinkx-spacing-sm);
-}
-
-.railBtn {
+.tvIcon {
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: var(--blinkx-radius-xs);
-  border: none;
-  background: transparent;
   color: var(--blinkx-color-icon-secondary);
   cursor: pointer;
-  transition: background 120ms ease;
+  border-radius: 4px;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+  transition: all var(--blinkx-duration-fast)
+    var(--blinkx-ease-default);
 }
-.railBtn:hover {
-  background: var(--blinkx-color-surface-overlay);
+.tvIcon:hover {
   color: var(--blinkx-color-icon-primary);
+  background: var(--blinkx-color-surface-overlay);
 }
-.railBtnActive {
-  color: var(--blinkx-color-icon-brand);
+.tvIconActive {
+  color: var(--blinkx-color-text-brand);
+  background: var(--blinkx-color-bg-brand-subtle-1);
+}
+
+.separator {
+  width: 18px;
+  height: 1px;
+  background: var(--blinkx-color-stroke-subtle);
+  margin: 4px 0;
+  flex-shrink: 0;
 }
