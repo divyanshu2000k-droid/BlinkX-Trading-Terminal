@@ -2,7 +2,8 @@
 // Keep these in sync with variables.css whenever theme tokens change.
 //
 // Token → hex reference:
-//   dark  --blinkx-color-surface-card      = #161A21
+//   dark  --blinkx-color-surface-elevated  = #23282E
+//   dark  --blinkx-color-surface-card      = #1A1E23
 //   dark  --blinkx-color-border-subtle     = #1e2029
 //   dark  --blinkx-color-text-secondary    = #a0a0b0
 //   light --blinkx-color-surface-card      = #F9F9F9
@@ -14,8 +15,8 @@
 const themeMap = {
   dark: {
     theme: 'dark',
-    toolbar_bg: '#1C2128',
-    backgroundColor: '#161A21',
+    toolbar_bg: '#23282E',
+    backgroundColor: '#1A1E23',
     gridColor: '#1e2029',
     textColor: '#a0a0b0',
     upColor: '#26a69a',

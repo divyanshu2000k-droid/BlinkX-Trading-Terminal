@@ -1,0 +1,122 @@
+
+.blinkx-tooltip {
+  --tooltip-bg: #000000;
+  --tooltip-supporting-text: #e7e7e7;
+  --tooltip-title: #ffffff;
+  --tooltip-arrow-size: 12px;
+  --tooltip-radius: 6px;
+  --tooltip-shadow: 0 24px 40px -8px rgb(10 13 16 / 32%);
+  --tooltip-surface-width: 224px;
+  display: inline-block;
+  filter: drop-shadow(0 22px 28px rgb(10 13 16 / 22%));
+  font-family: Barlow, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1;
+  padding: var(--tooltip-arrow-size);
+  position: relative;
+}
+
+.blinkx-tooltip__surface {
+  background: var(--tooltip-bg);
+  border-radius: var(--tooltip-radius);
+  box-shadow: var(--tooltip-shadow);
+  box-sizing: border-box;
+  color: var(--tooltip-title);
+  display: grid;
+  gap: 8px;
+  justify-items: stretch;
+  max-width: var(--tooltip-surface-width);
+  min-width: 0;
+  padding: 12px;
+  position: relative;
+  width: var(--tooltip-surface-width);
+}
+
+.blinkx-tooltip--header-only .blinkx-tooltip__surface {
+  gap: 0;
+  max-width: var(--tooltip-surface-width);
+  padding: 8px;
+  width: fit-content;
+}
+
+.blinkx-tooltip__title {
+  color: var(--tooltip-title);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 16px;
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  width: 100%;
+  word-break: normal;
+}
+
+.blinkx-tooltip__supporting-text {
+  color: var(--tooltip-supporting-text);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 16px;
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  width: 100%;
+  word-break: normal;
+}
+
+.blinkx-tooltip__arrow {
+  background: var(--tooltip-bg);
+  border-radius: 2px;
+  height: var(--tooltip-arrow-size);
+  position: absolute;
+  transform: rotate(45deg);
+  width: var(--tooltip-arrow-size);
+  z-index: 1;
+}
+
+.blinkx-tooltip--type-top-left .blinkx-tooltip__arrow {
+  left: 28px;
+  top: 6px;
+}
+
+.blinkx-tooltip--type-top-centre .blinkx-tooltip__arrow {
+  left: 50%;
+  top: 6px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.blinkx-tooltip--type-top-right .blinkx-tooltip__arrow {
+  right: 28px;
+  top: 6px;
+}
+
+.blinkx-tooltip--type-bottom-left .blinkx-tooltip__arrow {
+  bottom: 6px;
+  left: 28px;
+}
+
+.blinkx-tooltip--type-bottom-centre .blinkx-tooltip__arrow {
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.blinkx-tooltip--type-bottom-right .blinkx-tooltip__arrow {
+  bottom: 6px;
+  right: 28px;
+}
+
+.blinkx-tooltip--type-left .blinkx-tooltip__arrow {
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.blinkx-tooltip--type-right .blinkx-tooltip__arrow {
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}

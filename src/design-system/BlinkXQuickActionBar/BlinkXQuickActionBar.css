@@ -1,0 +1,308 @@
+
+.blinkx-quick-action-bar {
+  --qbar-buy: #2bb02b;
+  --qbar-buy-hover: #289329;
+  --qbar-control-bg: #ffffff;
+  --qbar-control-hover: #f2f2f2;
+  --qbar-icon: #414143;
+  --qbar-sell: #dd2006;
+  --qbar-sell-hover: #b6200c;
+  --qbar-shadow-lg:
+    0 2px 2px -1px #0a0d100a,
+    0 4px 6px -2px #0a0d1008,
+    0 12px 16px -4px #0a0d1014;
+  --qbar-shadow-xl:
+    0 3px 3px -1.5px #0a0d100a,
+    0 8px 8px -4px #0a0d1008,
+    0 20px 24px -4px #0a0d1014;
+  --qbar-stroke: #e0e0e0;
+  --qbar-surface: #ffffff;
+  --qbar-tooltip-bg: #000000;
+  --qbar-tooltip-stroke: transparent;
+  --qbar-tooltip-text: #ffffff;
+  align-items: center;
+  background: var(--qbar-surface);
+  border: 0;
+  border-radius: 12px;
+  box-shadow: var(--qbar-shadow-lg);
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: Barlow, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  gap: 4px;
+  min-height: 44px;
+  outline: 1px solid var(--qbar-stroke);
+  outline-offset: -1px;
+  padding: 8px;
+  position: relative;
+  width: fit-content;
+}
+
+.blinkx-quick-action-bar--theme-dark {
+  --qbar-buy: #45b045;
+  --qbar-buy-hover: #367139;
+  --qbar-control-bg: #1a1e23;
+  --qbar-control-hover: #33373b;
+  --qbar-icon: #999999;
+  --qbar-sell: #dd422c;
+  --qbar-sell-hover: #85382f;
+  --qbar-shadow-lg:
+    0 2px 2px -1px #0a0d1033,
+    0 4px 6px -2px #0a0d102e,
+    0 12px 16px -4px #0a0d105c;
+  --qbar-shadow-xl:
+    0 3px 3px -1.5px #0a0d1033,
+    0 8px 8px -4px #0a0d102e,
+    0 20px 24px -4px #0a0d105c;
+  --qbar-stroke: #353c46;
+  --qbar-surface: #1a1e23;
+  --qbar-tooltip-bg: #000000;
+  --qbar-tooltip-stroke: #24282d;
+  --qbar-tooltip-text: #ffffff;
+}
+
+.blinkx-quick-action-bar__content {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+  height: 28px;
+}
+
+.blinkx-quick-action-bar__group {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.blinkx-quick-action-bar__action,
+.blinkx-quick-action-bar__more {
+  align-items: center;
+  appearance: none;
+  color: var(--qbar-icon);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  margin: 0;
+  transition:
+    background 160ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 160ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 160ms cubic-bezier(0.2, 0, 0, 1),
+    color 160ms cubic-bezier(0.2, 0, 0, 1),
+    transform 160ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.blinkx-quick-action-bar__action {
+  background: var(--qbar-control-bg);
+  border: 1px solid var(--qbar-stroke);
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  height: 28px;
+  letter-spacing: 0;
+  line-height: 22px;
+  padding: 0;
+  width: 28px;
+}
+
+.blinkx-quick-action-bar__action[data-tone="buy"] {
+  background: var(--qbar-buy);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.blinkx-quick-action-bar__action[data-tone="sell"] {
+  background: var(--qbar-sell);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.blinkx-quick-action-bar__action:hover,
+.blinkx-quick-action-bar__action[data-active="true"] {
+  background: var(--qbar-control-hover);
+  transform: translateY(-1px);
+}
+
+.blinkx-quick-action-bar__action[data-tone="buy"]:hover,
+.blinkx-quick-action-bar__action[data-tone="buy"][data-active="true"] {
+  background: var(--qbar-buy-hover);
+}
+
+.blinkx-quick-action-bar__action[data-tone="sell"]:hover,
+.blinkx-quick-action-bar__action[data-tone="sell"][data-active="true"] {
+  background: var(--qbar-sell-hover);
+}
+
+.blinkx-quick-action-bar__action:active,
+.blinkx-quick-action-bar__more:active {
+  transform: scale(0.96);
+}
+
+.blinkx-quick-action-bar__action:focus-visible,
+.blinkx-quick-action-bar__more:focus-visible {
+  box-shadow: 0 0 0 3px rgb(209 210 255 / 80%);
+  outline: none;
+}
+
+.blinkx-quick-action-bar--theme-dark .blinkx-quick-action-bar__action:focus-visible,
+.blinkx-quick-action-bar--theme-dark .blinkx-quick-action-bar__more:focus-visible {
+  box-shadow: 0 0 0 3px rgb(63 68 166 / 80%);
+}
+
+.blinkx-quick-action-bar__action-content {
+  align-items: center;
+  display: inline-flex;
+  height: 16px;
+  justify-content: center;
+  min-width: 16px;
+}
+
+.blinkx-quick-action-bar__icon,
+.blinkx-quick-action-bar__dots {
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+.blinkx-quick-action-bar__icon-fill {
+  fill: currentColor;
+}
+
+.blinkx-quick-action-bar__icon-stroke {
+  stroke: currentColor;
+}
+
+.blinkx-quick-action-bar__more {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  height: 28px;
+  padding: 0;
+  position: relative;
+  width: 16px;
+}
+
+.blinkx-quick-action-bar__more::before {
+  background: var(--qbar-control-hover);
+  border-radius: 6px;
+  box-sizing: border-box;
+  content: "";
+  height: 28px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    opacity 160ms cubic-bezier(0.2, 0, 0, 1),
+    background 160ms cubic-bezier(0.2, 0, 0, 1);
+  width: 16px;
+  z-index: 0;
+}
+
+.blinkx-quick-action-bar__more .blinkx-quick-action-bar__dots {
+  position: relative;
+  z-index: 1;
+}
+
+.blinkx-quick-action-bar__more:hover,
+.blinkx-quick-action-bar__more[data-active="true"] {
+  color: var(--qbar-icon);
+  transform: translateY(-1px);
+}
+
+.blinkx-quick-action-bar__more:hover::before,
+.blinkx-quick-action-bar__more[data-active="true"]::before {
+  opacity: 1;
+}
+
+.blinkx-quick-action-bar__tooltip {
+  --tooltip-bg: var(--qbar-tooltip-bg);
+  --tooltip-title: var(--qbar-tooltip-text);
+  bottom: calc(100% - 6px);
+  left: 22px;
+  filter: none;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.blinkx-quick-action-bar__tooltip .blinkx-tooltip__surface {
+  box-shadow: var(--qbar-shadow-xl);
+  justify-items: center;
+  min-width: max-content;
+  outline: 1px solid var(--qbar-tooltip-stroke);
+  outline-offset: -1px;
+  width: max-content;
+  z-index: 2;
+}
+
+.blinkx-quick-action-bar__tooltip .blinkx-tooltip__arrow {
+  box-shadow: 0 0 0 1px var(--qbar-tooltip-stroke);
+}
+
+.blinkx-quick-action-bar__tooltip .blinkx-tooltip__title {
+  overflow-wrap: normal;
+  text-align: center;
+  white-space: nowrap;
+  word-break: normal;
+}
+
+.blinkx-quick-action-bar__tooltip[data-action="buy"] .blinkx-tooltip__surface,
+.blinkx-quick-action-bar__tooltip[data-action="sell"] .blinkx-tooltip__surface {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.blinkx-quick-action-bar__tooltip[data-action="sell"] {
+  left: 58px;
+}
+
+.blinkx-quick-action-bar__tooltip[data-action="trading-view"] {
+  left: 94px;
+}
+
+.blinkx-quick-action-bar__tooltip[data-action="view-chart"] {
+  left: 130px;
+}
+
+.blinkx-quick-action-bar__tooltip[data-action="market-depth"] {
+  left: 166px;
+}
+
+.blinkx-quick-action-bar__tooltip[data-action="option-chain"] {
+  left: 202px;
+}
+
+.blinkx-quick-action-bar__tooltip[data-action="more-options"] {
+  left: 230px;
+}
+
+.buttons-token__preview.blinkx-quick-action-bar-token-preview {
+  min-height: 156px;
+  overflow: visible;
+  padding: 44px 24px 28px;
+}
+
+.buttons-token-grid.quick-action-state-grid,
+.buttons-token-grid.quick-action-theme-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .buttons-token-grid.quick-action-state-grid,
+  .buttons-token-grid.quick-action-theme-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blinkx-quick-action-bar__action,
+  .blinkx-quick-action-bar__more {
+    transition-duration: 0.01ms;
+  }
+}

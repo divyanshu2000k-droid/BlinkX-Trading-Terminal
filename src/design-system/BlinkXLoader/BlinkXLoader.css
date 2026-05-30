@@ -1,0 +1,162 @@
+.blinkx-loader {
+  --loader-arc-end: #dd3b59;
+  --loader-arc-middle: #fb8043;
+  --loader-arc-start: #f8bc67;
+  --loader-surface: #ffffff;
+  --loader-track: #f2f2f2;
+  align-items: center;
+  display: inline-flex;
+  height: 56px;
+  justify-content: center;
+  width: 56px;
+}
+
+.blinkx-loader--theme-dark {
+  --loader-arc-end: #dd3b5999;
+  --loader-arc-middle: #fb804399;
+  --loader-arc-start: #f8bc6799;
+  --loader-surface: #1a1e23;
+  --loader-track: #33373b;
+}
+
+.blinkx-loader__surface {
+  align-items: center;
+  background: var(--loader-surface);
+  border-radius: 999px;
+  display: inline-flex;
+  height: 56px;
+  justify-content: center;
+  position: relative;
+  width: 56px;
+}
+
+.blinkx-loader__ring {
+  height: 56px;
+  overflow: visible;
+  position: absolute;
+  transform-origin: 50% 50%;
+  width: 56px;
+}
+
+.blinkx-loader__track,
+.blinkx-loader__arc {
+  fill: none;
+  stroke-width: 5.3;
+}
+
+.blinkx-loader__track {
+  stroke: var(--loader-track);
+}
+
+.blinkx-loader__arc {
+  stroke-dasharray: 104 55.3;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.blinkx-loader__logo {
+  align-items: center;
+  display: inline-flex;
+  height: 28px;
+  justify-content: center;
+  position: relative;
+  width: 28px;
+  z-index: 1;
+}
+
+.blinkx-loader__logo-svg {
+  display: block;
+  height: 28px;
+  width: 28px;
+}
+
+.blinkx-loader--variation-constant .blinkx-loader__ring {
+  animation: blinkx-loader-rotate 0.8s linear infinite;
+}
+
+.blinkx-loader--variation-breathing-arc .blinkx-loader__ring {
+  animation: blinkx-loader-rotate 1.4s linear infinite;
+}
+
+.blinkx-loader--variation-breathing-arc .blinkx-loader__arc {
+  animation: blinkx-loader-breathe-width 1.4s ease-in-out infinite;
+}
+
+.blinkx-loader--variation-stretch .blinkx-loader__ring {
+  animation: blinkx-loader-rotate 1.8s linear infinite;
+}
+
+.blinkx-loader--variation-stretch .blinkx-loader__arc {
+  animation: blinkx-loader-stretch 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes blinkx-loader-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blinkx-loader-breathe-width {
+  0% {
+    stroke-width: 4.3;
+  }
+
+  50% {
+    stroke-width: 6.3;
+  }
+
+  100% {
+    stroke-width: 4.3;
+  }
+}
+
+@keyframes blinkx-loader-stretch {
+  0% {
+    stroke-dasharray: 40 119.3;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 124 35.3;
+    stroke-dashoffset: -40;
+  }
+
+  100% {
+    stroke-dasharray: 40 119.3;
+    stroke-dashoffset: -159.3;
+  }
+}
+
+.buttons-token__preview.blinkx-loader-token-preview {
+  min-height: 180px;
+}
+
+.buttons-token-grid.loader-variation-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.buttons-token-grid.loader-theme-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 1080px) {
+  .buttons-token-grid.loader-variation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .buttons-token-grid.loader-theme-grid,
+  .buttons-token-grid.loader-variation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blinkx-loader__arc,
+  .blinkx-loader__ring {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}

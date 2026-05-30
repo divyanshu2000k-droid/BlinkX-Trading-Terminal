@@ -158,7 +158,7 @@
   --blinkx-color-stroke-focus-ring: #DBE1FB;
   --blinkx-color-stroke-toggle:     #E2E8F0;
 
-  --blinkx-gradient-g1: #3B1757;
+  --blinkx-gradient-g1: #4B1F71;
   --blinkx-gradient-g2: #A1006F;
   --blinkx-gradient-g3: #DD3B59;
   --blinkx-gradient-g4: #FB8043;
@@ -203,6 +203,34 @@
 
   /* ── Glass overlay for text on colored buttons ── */
   --blinkx-color-glass-white-subtle: rgba(255,255,255,0.18);
+
+  /* ── Heatmap intensity scale ── */
+  --blinkx-heatmap-green-1: #2BB02B;
+  --blinkx-heatmap-green-2: #55C055;
+  --blinkx-heatmap-green-3: #80D080;
+  --blinkx-heatmap-green-4: #AADFAA;
+  --blinkx-heatmap-green-5: #D5EFD5;
+  --blinkx-heatmap-green-6: #E9F7E9;
+  --blinkx-heatmap-red-1:   #DD2006;
+  --blinkx-heatmap-red-2:   #E44D38;
+  --blinkx-heatmap-red-3:   #EB796A;
+  --blinkx-heatmap-red-4:   #F1A69B;
+  --blinkx-heatmap-red-5:   #F8D2CD;
+  --blinkx-heatmap-red-6:   #FBE8E6;
+
+  /* ── Chart series colors ── */
+  --blinkx-chart-c1:  #49B3AD;
+  --blinkx-chart-c2:  #FC9969;
+  --blinkx-chart-c3:  #FDCCB4;
+  --blinkx-chart-c4:  #8E94CC;
+  --blinkx-chart-c5:  #CDD0EC;
+  --blinkx-chart-c6:  #94C798;
+  --blinkx-chart-c7:  #D0E6D2;
+  --blinkx-chart-c8:  #DEC43F;
+  --blinkx-chart-c9:  #EEE09B;
+  --blinkx-chart-c10: #7CCFDF;
+  --blinkx-chart-c11: #C6EAF1;
+  --blinkx-chart-c12: #8D8D8D;
 }
 
 /* ════════════════════════════════════════════
@@ -250,10 +278,10 @@
   --blinkx-color-bg-sell-subtle:        rgba(205,73,55,0.15);
   --blinkx-overlay-scrim:               rgba(0,0,0,0.60);
 
-  --blinkx-color-surface-page:     #0D0F14;
-  --blinkx-color-surface-card:     #161A21;
-  --blinkx-color-surface-elevated: #1C2128;
-  --blinkx-color-surface-overlay:  #232831;
+  --blinkx-color-surface-page:     #0A0D10;
+  --blinkx-color-surface-card:     #1A1E23;
+  --blinkx-color-surface-elevated: #23282E;
+  --blinkx-color-surface-overlay:  #2C323A;
 
   --blinkx-color-text-primary:           #CACACE;
   --blinkx-color-text-secondary:         #B2B2B3;
@@ -264,7 +292,7 @@
   --blinkx-color-text-positive:          #48A848;
   --blinkx-color-text-negative:          #CD4937;
   --blinkx-color-text-warning:           #F0B22A;
-  --blinkx-color-surface-base:           #0D0F14;
+  --blinkx-color-surface-base:           #0A0D10;
   --blinkx-color-border-subtle:          #1F242C;
   --blinkx-color-text-on-disabled-cta:   #808081;
   --blinkx-color-text-white-on-cta:      #FFFFFF;
@@ -278,7 +306,7 @@
   --blinkx-color-icon-fill-white:       #FFFFFF;
   --blinkx-color-icon-fill-on-disabled: #808081;
 
-  --blinkx-color-stroke-default:    #2A3038;
+  --blinkx-color-stroke-default:    #33373B;
   --blinkx-color-stroke-subtle:     #1F242C;
   --blinkx-color-stroke-brand:      #4E54FD;
   --blinkx-color-stroke-dark:       #999999;
@@ -311,9 +339,37 @@
   --blinkx-shadow-2xl:  0 12px 24px rgba(10,13,16,0.56);
   --blinkx-shadow-3xl:  0 18px 36px rgba(10,13,16,0.82);
 
-  --blinkx-gradient-g1: #FB1F71;
-  --blinkx-gradient-g2: #8B0B51;
-  --blinkx-gradient-g3: #8F2F43;
-  --blinkx-gradient-g4: #A15936;
+  --blinkx-gradient-g1: #5D3A7C;
+  --blinkx-gradient-g2: #952F77;
+  --blinkx-gradient-g3: #934757;
+  --blinkx-gradient-g4: #955C41;
   --blinkx-gradient-g5: #9C620F;
+
+  /* ── Heatmap intensity scale (dark) ── */
+  --blinkx-heatmap-green-1: #48A848;
+  --blinkx-heatmap-green-2: #3F8C41;
+  --blinkx-heatmap-green-3: #367139;
+  --blinkx-heatmap-green-4: #2C5532;
+  --blinkx-heatmap-green-5: #233A2A;
+  --blinkx-heatmap-green-6: #1F2C27;
+  --blinkx-heatmap-red-1:   #CD4937;
+  --blinkx-heatmap-red-2:   #A94133;
+  --blinkx-heatmap-red-3:   #85382F;
+  --blinkx-heatmap-red-4:   #622F2B;
+  --blinkx-heatmap-red-5:   #3E2727;
+  --blinkx-heatmap-red-6:   #2C2225;
+
+  /* ── Chart series colors (dark) ── */
+  --blinkx-chart-c1:  #3B8684;
+  --blinkx-chart-c2:  #B87454;
+  --blinkx-chart-c3:  #B99888;
+  --blinkx-chart-c4:  #6B7199;
+  --blinkx-chart-c5:  #979BB0;
+  --blinkx-chart-c6:  #6F9475;
+  --blinkx-chart-c7:  #99AA9D;
+  --blinkx-chart-c8:  #A39237;
+  --blinkx-chart-c9:  #AEA677;
+  --blinkx-chart-c10: #5F9AA7;
+  --blinkx-chart-c11: #92ADB3;
+  --blinkx-chart-c12: #6B6C6D;
 }

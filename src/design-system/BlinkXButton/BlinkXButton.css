@@ -1,0 +1,233 @@
+
+.blinkx-button {
+  --button-bg-brand: #171efd;
+  --button-bg-brand-hover: #181ed1;
+  --button-bg-secondary-hover: #e7e8fe;
+  --button-bg-disabled: #e7e7e7;
+  --button-focus-ring: #d1d2ff;
+  --button-stroke-brand: #171efd;
+  --button-stroke-disabled: #cecece;
+  --button-text-brand: #171efd;
+  --button-text-disabled: #9d9d9d;
+  --button-text-on-primary: #ffffff;
+  --button-icon-disabled: #cecece;
+  --button-icon-fill-on-disabled-cta: #9d9d9d;
+  --button-plus-disabled: var(--button-icon-disabled);
+  --button-bg: transparent;
+  --button-border: transparent;
+  --button-color: var(--button-text-brand);
+  --button-icon-color: currentColor;
+  --button-height: 24px;
+  --button-padding-left: 12px;
+  --button-padding-right: 8px;
+  --button-font-size: 12px;
+  --button-line-height: 16px;
+  --button-bolt-size: 16px;
+  --button-bolt-gap: 8px;
+  --button-plus-size: 12px;
+  --button-icon-gap: 4px;
+  align-items: center;
+  appearance: none;
+  background: var(--button-bg);
+  border: 1px solid var(--button-border);
+  border-radius: 9999px;
+  color: var(--button-color);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Barlow, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: var(--button-font-size);
+  font-weight: 600;
+  height: var(--button-height);
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: var(--button-line-height);
+  overflow: visible;
+  padding: 4px var(--button-padding-right) 4px var(--button-padding-left);
+  position: relative;
+  text-align: center;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+  white-space: nowrap;
+  width: auto;
+}
+
+.blinkx-button--theme-dark {
+  --button-bg-brand: #585dfe;
+  --button-bg-brand-hover: #4c50d2;
+  --button-bg-secondary-hover: #202439;
+  --button-bg-disabled: #33373b;
+  --button-focus-ring: #3f44a6;
+  --button-stroke-brand: #585dfe;
+  --button-stroke-disabled: #4d4f52;
+  --button-text-brand: #585dfe;
+  --button-text-disabled: #808081;
+  --button-icon-disabled: #4d4f52;
+  --button-icon-fill-on-disabled-cta: #808081;
+  --button-plus-disabled: var(--button-icon-disabled);
+}
+
+.blinkx-button--size-sm {
+  --button-height: 24px;
+  --button-font-size: 12px;
+  --button-line-height: 16px;
+  --button-bolt-size: 16px;
+  --button-plus-size: 12px;
+}
+
+.blinkx-button--size-md {
+  --button-height: 32px;
+  --button-font-size: 12px;
+  --button-line-height: 16px;
+  --button-bolt-size: 16px;
+  --button-plus-size: 16px;
+}
+
+.blinkx-button--size-lg {
+  --button-height: 36px;
+  --button-padding-left: 16px;
+  --button-padding-right: 8px;
+  --button-font-size: 14px;
+  --button-line-height: 20px;
+  --button-bolt-size: 20px;
+  --button-plus-size: 16px;
+}
+
+.blinkx-button--size-xl {
+  --button-height: 40px;
+  --button-padding-left: 16px;
+  --button-padding-right: 12px;
+  --button-font-size: 16px;
+  --button-line-height: 24px;
+  --button-bolt-size: 24px;
+  --button-plus-size: 20px;
+}
+
+.blinkx-button--size-2xl {
+  --button-height: 48px;
+  --button-padding-left: 20px;
+  --button-padding-right: 16px;
+  --button-font-size: 18px;
+  --button-line-height: 24px;
+  --button-bolt-size: 24px;
+  --button-plus-size: 20px;
+}
+
+.blinkx-button--type-primary {
+  --button-bg: var(--button-bg-brand);
+  --button-color: var(--button-text-on-primary);
+  --button-icon-color: var(--button-text-on-primary);
+  gap: var(--button-bolt-gap);
+}
+
+.blinkx-button--type-secondary,
+.blinkx-button--type-with-icon {
+  --button-border: var(--button-stroke-brand);
+  --button-color: var(--button-text-brand);
+  --button-icon-color: var(--button-stroke-brand);
+}
+
+.blinkx-button--type-secondary {
+  --button-padding-right: var(--button-padding-left);
+}
+
+.blinkx-button[data-custom-leading-icon="on"],
+.blinkx-button[data-custom-trailing-icon="on"] {
+  gap: var(--button-icon-gap);
+}
+
+.blinkx-button--type-with-icon {
+  --button-padding-left: 10px;
+  --button-padding-right: 10px;
+  gap: var(--button-icon-gap);
+}
+
+.blinkx-button--type-with-icon[data-leading-icon="on"][data-trailing-icon="off"] {
+  --button-padding-right: 12px;
+}
+
+.blinkx-button--type-with-icon[data-leading-icon="off"][data-trailing-icon="on"] {
+  --button-padding-left: 12px;
+}
+
+.blinkx-button--type-primary:hover:not(:disabled),
+.blinkx-button--type-primary.blinkx-button--state-hover {
+  --button-bg: var(--button-bg-brand-hover);
+}
+
+.blinkx-button--type-secondary:hover:not(:disabled),
+.blinkx-button--type-secondary.blinkx-button--state-hover,
+.blinkx-button--type-with-icon:hover:not(:disabled),
+.blinkx-button--type-with-icon.blinkx-button--state-hover {
+  --button-bg: var(--button-bg-secondary-hover);
+}
+
+.blinkx-button:focus-visible,
+.blinkx-button--state-focused {
+  outline: 3px solid var(--button-focus-ring);
+  outline-offset: 0;
+}
+
+.blinkx-button--type-primary:disabled {
+  --button-bg: var(--button-bg-disabled);
+  --button-color: var(--button-text-disabled);
+  --button-icon-color: var(--button-icon-fill-on-disabled-cta);
+}
+
+.blinkx-button--type-secondary:disabled,
+.blinkx-button--type-with-icon:disabled {
+  --button-border: var(--button-stroke-disabled);
+  --button-color: var(--button-text-disabled);
+  --button-icon-color: var(--button-plus-disabled);
+  cursor: not-allowed;
+}
+
+.blinkx-button--type-primary:disabled {
+  cursor: not-allowed;
+}
+
+.blinkx-button__label {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.blinkx-button__bolt {
+  color: var(--button-icon-color);
+  display: block;
+  flex: 0 0 auto;
+  fill: currentColor;
+  height: var(--button-bolt-size);
+  width: var(--button-bolt-size);
+}
+
+.blinkx-button__plus {
+  color: var(--button-icon-color);
+  display: block;
+  flex: 0 0 auto;
+  fill: none;
+  height: var(--button-plus-size);
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  width: var(--button-plus-size);
+}
+
+.blinkx-button__custom-icon {
+  align-items: center;
+  color: var(--button-icon-color);
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: var(--button-plus-size);
+  justify-content: center;
+  width: var(--button-plus-size);
+}
+
+.blinkx-button__custom-icon svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}

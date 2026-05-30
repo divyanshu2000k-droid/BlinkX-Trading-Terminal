@@ -1,0 +1,144 @@
+
+.blinkx-tab {
+  --tab-active: #171efd;
+  --tab-hover: #f2f2f2;
+  --tab-stroke: #e7e7e7;
+  --tab-tag-bg: linear-gradient(
+      90deg,
+      rgb(68 15 118 / 10%) 0%,
+      rgb(161 0 111 / 10%) 27.4038%,
+      rgb(221 59 89 / 10%) 50%,
+      rgb(251 128 67 / 10%) 70%,
+      rgb(253 197 67 / 10%) 100%
+    ),
+    #ffffff;
+  --tab-tag-text: linear-gradient(90deg, #a1006f 0%, #440f76 100%);
+  --tab-text-hover: #41414e;
+  --tab-text-secondary: #666666;
+  --tab-focus-ring: #d1d2ff;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--tab-stroke);
+  display: inline-flex;
+  font-family: Barlow, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  gap: 8px;
+  min-height: 40px;
+  width: fit-content;
+}
+
+.blinkx-tab--theme-dark {
+  --tab-active: #585dfe;
+  --tab-hover: #272a2f;
+  --tab-stroke: #33373b;
+  --tab-tag-bg: linear-gradient(90deg, #b84b96 0%, #9652d6 100%);
+  --tab-tag-text: #ffffff;
+  --tab-text-hover: #cacace;
+  --tab-text-secondary: #b2b2b3;
+  --tab-focus-ring: #3f44a6;
+}
+
+.blinkx-tab__item {
+  align-items: stretch;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--tab-text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font: inherit;
+  gap: 12px;
+  height: 40px;
+  justify-content: flex-start;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  transition: color 160ms ease;
+}
+
+.blinkx-tab__label-wrap {
+  align-items: center;
+  border-radius: 4px;
+  display: inline-flex;
+  gap: 4px;
+  height: 24px;
+  justify-content: center;
+  min-width: 0;
+  padding: 2px 4px;
+  transition: background 160ms ease;
+}
+
+.blinkx-tab__label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.blinkx-tab__tag {
+  align-items: center;
+  background: var(--tab-tag-bg);
+  border-radius: 9999px;
+  color: transparent;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  height: 20px;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: 16px;
+  overflow: hidden;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.blinkx-tab__tag-label {
+  background: var(--tab-tag-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blinkx-tab__indicator {
+  background: transparent;
+  border-radius: 9999px 9999px 0 0;
+  display: block;
+  height: 4px;
+  transition: background 160ms ease;
+  width: 100%;
+}
+
+.blinkx-tab__item:hover:not([data-active="true"]) {
+  color: var(--tab-text-hover);
+}
+
+.blinkx-tab__item:hover:not([data-active="true"]) .blinkx-tab__indicator {
+  background: var(--tab-hover);
+}
+
+.blinkx-tab__item:focus-visible .blinkx-tab__label-wrap {
+  outline: 3px solid var(--tab-focus-ring);
+  outline-offset: 2px;
+}
+
+.blinkx-tab__item[data-active="true"] {
+  color: var(--tab-active);
+}
+
+.blinkx-tab__item[data-active="true"] .blinkx-tab__indicator {
+  background: var(--tab-active);
+}
+
+.buttons-token-grid.tab-count-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 560px), 1fr));
+}
+
+.buttons-token__preview.blinkx-tab-token-preview {
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-inline: 32px;
+}

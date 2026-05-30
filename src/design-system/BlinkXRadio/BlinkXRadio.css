@@ -1,0 +1,130 @@
+.blinkx-radio {
+  --radio-brand: #171efd;
+  --radio-focus-ring: #d1d2ff;
+  --radio-icon-primary: #414143;
+  --radio-bg-disabled: #e7e7e7;
+  --radio-icon-disabled: #cecece;
+  --radio-size: 16px;
+  --radio-dot-size: 10px;
+  --radio-focus-ring-size: 22px;
+  --radio-stroke-width: 1.25px;
+  --radio-focused-stroke-width: 2px;
+  --radio-border: var(--radio-icon-primary);
+  --radio-bg: transparent;
+  --radio-dot-bg: transparent;
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  height: var(--radio-size);
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+  width: var(--radio-size);
+}
+
+.blinkx-radio--theme-dark {
+  --radio-brand: #585dfe;
+  --radio-focus-ring: #3f44a6;
+  --radio-icon-primary: #999999;
+  --radio-bg-disabled: #33373b;
+  --radio-icon-disabled: #4d4f52;
+}
+
+.blinkx-radio--size-sm {
+  --radio-size: 16px;
+  --radio-dot-size: 10px;
+  --radio-focus-ring-size: 22px;
+  --radio-stroke-width: 1.25px;
+}
+
+.blinkx-radio--size-md {
+  --radio-size: 20px;
+  --radio-dot-size: 12px;
+  --radio-focus-ring-size: 26px;
+  --radio-stroke-width: 1.5px;
+}
+
+.blinkx-radio--size-lg {
+  --radio-size: 24px;
+  --radio-dot-size: 16px;
+  --radio-focus-ring-size: 30px;
+  --radio-stroke-width: 1.5px;
+}
+
+.blinkx-radio--state-active {
+  --radio-border: var(--radio-brand);
+  --radio-dot-bg: var(--radio-brand);
+}
+
+.blinkx-radio--state-focused {
+  --radio-border: var(--radio-brand);
+  --radio-stroke-width: var(--radio-focused-stroke-width);
+}
+
+.blinkx-radio--state-disable {
+  --radio-bg: var(--radio-bg-disabled);
+  --radio-border: var(--radio-icon-disabled);
+  cursor: not-allowed;
+}
+
+.blinkx-radio__input {
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+}
+
+.blinkx-radio::before {
+  border: 3px solid var(--radio-focus-ring);
+  border-radius: 9999px;
+  box-sizing: border-box;
+  content: "";
+  height: var(--radio-focus-ring-size);
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 160ms ease;
+  width: var(--radio-focus-ring-size);
+}
+
+.blinkx-radio--state-focused::before {
+  opacity: 1;
+}
+
+.blinkx-radio__control {
+  align-items: center;
+  background: var(--radio-bg);
+  border: var(--radio-stroke-width) solid var(--radio-border);
+  border-radius: 9999px;
+  display: inline-flex;
+  height: var(--radio-size);
+  justify-content: center;
+  position: relative;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+  width: var(--radio-size);
+  z-index: 1;
+}
+
+.blinkx-radio__dot {
+  background: var(--radio-dot-bg);
+  border-radius: 9999px;
+  display: block;
+  height: var(--radio-dot-size);
+  opacity: 0;
+  transform: scale(0.45);
+  transition:
+    opacity 160ms ease,
+    transform 180ms cubic-bezier(0.2, 0, 0, 1);
+  width: var(--radio-dot-size);
+}
+
+.blinkx-radio--state-active .blinkx-radio__dot {
+  opacity: 1;
+  transform: scale(1);
+}

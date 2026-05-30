@@ -1,0 +1,272 @@
+
+.blinkx-content-dropdown {
+  --content-dropdown-brand: #171efd;
+  --content-dropdown-focus-fill: #f3f4ff;
+  --content-dropdown-focus-ring: #d1d2ff;
+  --content-dropdown-hover-fill: #f2f2f2;
+  --content-dropdown-icon: #414143;
+  --content-dropdown-shadow:
+    0 2px 2px -1px #0a0d120a,
+    0 4px 6px -2px #0a0d1208,
+    0 12px 16px -4px #0a0d1214;
+  --content-dropdown-stroke: #e7e7e7;
+  --content-dropdown-surface: #ffffff;
+  --content-dropdown-text: #41414e;
+  --content-dropdown-trigger-fill: transparent;
+  color: var(--content-dropdown-text);
+  display: inline-flex;
+  flex-direction: column;
+  font-family: Barlow, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  position: relative;
+  width: max-content;
+}
+
+.blinkx-content-dropdown--theme-dark {
+  --content-dropdown-brand: #585dfe;
+  --content-dropdown-focus-fill: #272a2f;
+  --content-dropdown-focus-ring: #3f44a6;
+  --content-dropdown-hover-fill: #33373b;
+  --content-dropdown-icon: #999999;
+  --content-dropdown-shadow:
+    0 2px 2px -1px #0a0d1033,
+    0 4px 6px -2px #0a0d102e,
+    0 12px 16px -4px #0a0d105c;
+  --content-dropdown-stroke: #33373b;
+  --content-dropdown-surface: #1a1e23;
+  --content-dropdown-text: #cacace;
+  --content-dropdown-trigger-fill: transparent;
+}
+
+.blinkx-content-dropdown--size-sm {
+  --content-dropdown-check-size: 12px;
+  --content-dropdown-font-size: 14px;
+  --content-dropdown-icon-size: 20px;
+  --content-dropdown-item-height: 30px;
+  --content-dropdown-item-line-height: 20px;
+  --content-dropdown-item-padding: 3px 6px;
+  --content-dropdown-label-gap: 5px;
+  --content-dropdown-menu-width-basic: 142px;
+  --content-dropdown-menu-width-leading: 158px;
+  --content-dropdown-text-width-basic: 100px;
+  --content-dropdown-text-width-leading: 118px;
+  --content-dropdown-trigger-gap: 8px;
+  --content-dropdown-trigger-min-width: 0px;
+  --content-dropdown-trigger-text-size: 12px;
+  --content-dropdown-trigger-line-height: 16px;
+}
+
+.blinkx-content-dropdown--size-md {
+  --content-dropdown-check-size: 12px;
+  --content-dropdown-font-size: 14px;
+  --content-dropdown-icon-size: 20px;
+  --content-dropdown-item-height: 30px;
+  --content-dropdown-item-line-height: 20px;
+  --content-dropdown-item-padding: 3px 6px;
+  --content-dropdown-label-gap: 5px;
+  --content-dropdown-menu-width-basic: 151px;
+  --content-dropdown-menu-width-leading: 161px;
+  --content-dropdown-text-width-basic: 111px;
+  --content-dropdown-text-width-leading: 120px;
+  --content-dropdown-trigger-gap: 10px;
+  --content-dropdown-trigger-min-width: 0px;
+  --content-dropdown-trigger-text-size: 14px;
+  --content-dropdown-trigger-line-height: 20px;
+}
+
+.blinkx-content-dropdown[data-leading-icon="off"] {
+  --content-dropdown-menu-width: var(--content-dropdown-menu-width-basic);
+  --content-dropdown-text-width: var(--content-dropdown-text-width-basic);
+}
+
+.blinkx-content-dropdown[data-leading-icon="on"] {
+  --content-dropdown-menu-width: var(--content-dropdown-menu-width-leading);
+  --content-dropdown-text-width: var(--content-dropdown-text-width-leading);
+}
+
+.blinkx-content-dropdown__trigger {
+  align-items: center;
+  appearance: none;
+  background: var(--content-dropdown-trigger-fill);
+  border: 1px solid var(--content-dropdown-stroke);
+  border-radius: 8px;
+  color: var(--content-dropdown-text);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: var(--content-dropdown-trigger-text-size);
+  font-weight: 600;
+  gap: var(--content-dropdown-trigger-gap);
+  height: 32px;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: var(--content-dropdown-trigger-line-height);
+  margin: 0;
+  min-width: var(--content-dropdown-trigger-min-width);
+  padding: 4px 6px 4px 8px;
+  transition:
+    background 160ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 160ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 160ms cubic-bezier(0.2, 0, 0, 1),
+    color 160ms cubic-bezier(0.2, 0, 0, 1);
+  width: max-content;
+}
+
+.blinkx-content-dropdown__trigger:hover,
+.blinkx-content-dropdown--state-hover .blinkx-content-dropdown__trigger {
+  background: var(--content-dropdown-hover-fill);
+  border-color: var(--content-dropdown-stroke);
+}
+
+.blinkx-content-dropdown--state-active .blinkx-content-dropdown__trigger {
+  background: var(--content-dropdown-hover-fill);
+  border-color: var(--content-dropdown-stroke);
+  box-shadow: none;
+}
+
+.blinkx-content-dropdown--state-focused .blinkx-content-dropdown__trigger,
+.blinkx-content-dropdown__trigger:focus-visible {
+  background: var(--content-dropdown-trigger-fill);
+  border-color: var(--content-dropdown-stroke);
+  box-shadow: none;
+  outline: none;
+}
+
+.blinkx-content-dropdown__trigger-label {
+  flex: 0 0 auto;
+  min-width: 0;
+  overflow: visible;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.blinkx-content-dropdown__caret {
+  display: block;
+  flex: 0 0 16px;
+  height: 16px;
+  stroke: var(--content-dropdown-icon);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+  transition: transform 160ms cubic-bezier(0.2, 0, 0, 1);
+  width: 16px;
+}
+
+.blinkx-content-dropdown__caret[data-open="true"] {
+  transform: rotate(180deg);
+}
+
+.blinkx-content-dropdown__menu {
+  background: var(--content-dropdown-surface);
+  border: 1px solid var(--content-dropdown-stroke);
+  border-radius: 12px;
+  box-shadow: var(--content-dropdown-shadow);
+  box-sizing: border-box;
+  display: grid;
+  left: 0;
+  min-width: var(--content-dropdown-menu-width);
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  transform: translateY(-8px);
+  transition:
+    transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 160ms ease-out;
+  width: max-content;
+  z-index: 10;
+}
+
+.blinkx-content-dropdown__menu[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.blinkx-content-dropdown__item {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--content-dropdown-text);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: var(--content-dropdown-font-size);
+  font-weight: 600;
+  gap: 0;
+  height: var(--content-dropdown-item-height);
+  justify-content: flex-start;
+  letter-spacing: 0;
+  line-height: var(--content-dropdown-item-line-height);
+  margin: 3px 4px 1px;
+  overflow: visible;
+  padding: var(--content-dropdown-item-padding);
+  text-align: left;
+  transition:
+    background 160ms cubic-bezier(0.2, 0, 0, 1),
+    color 160ms cubic-bezier(0.2, 0, 0, 1);
+  white-space: nowrap;
+  width: calc(100% - 8px);
+}
+
+.blinkx-content-dropdown__item + .blinkx-content-dropdown__item {
+  margin: 1px 4px 3px;
+}
+
+.blinkx-content-dropdown__item:hover,
+.blinkx-content-dropdown__item[data-hovered="true"] {
+  background: var(--content-dropdown-hover-fill);
+}
+
+.blinkx-content-dropdown__item:focus-visible {
+  box-shadow: 0 0 0 3px var(--content-dropdown-focus-ring);
+  outline: 1px solid var(--content-dropdown-brand);
+  outline-offset: -1px;
+}
+
+.blinkx-content-dropdown__item-content {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 1 auto;
+  gap: var(--content-dropdown-label-gap);
+  min-width: 0;
+}
+
+.blinkx-content-dropdown__leading-icon {
+  display: block;
+  flex: 0 0 var(--content-dropdown-icon-size);
+  height: var(--content-dropdown-icon-size);
+  width: var(--content-dropdown-icon-size);
+}
+
+.blinkx-content-dropdown__item-label {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.blinkx-content-dropdown__check {
+  display: block;
+  flex: 0 0 var(--content-dropdown-check-size);
+  height: var(--content-dropdown-check-size);
+  margin-left: 8px;
+  stroke: var(--content-dropdown-brand);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25;
+  width: var(--content-dropdown-check-size);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blinkx-content-dropdown__caret,
+  .blinkx-content-dropdown__item,
+  .blinkx-content-dropdown__menu,
+  .blinkx-content-dropdown__trigger {
+    transition-duration: 0.01ms;
+  }
+}

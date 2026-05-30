@@ -735,3 +735,156 @@ return <VirtualTable table={table} rowHeight={28} />;
 | `@tanstack/react-virtual` | ^3.x | use `useVirtualizer`, not `useVirtual` |
 | `dockview` | ^6.5.0 | workspace engine |
 | `zustand` | ^5.x | state management |
+
+---
+
+## 23. Design System Component Library — src/design-system/
+
+> This section supersedes Section 6 (Component Library) and updates
+> Layer 2 of Section 3 (Architecture Layers).
+> Sections 3 and 6 describe src/components/ which is now the LEGACY
+> component folder. src/design-system/ is the current source of truth.
+
+All official BlinkX UI components now live in src/design-system/.
+These are copied directly from the BlinkX Design System Storybook:
+https://github.com/vrundar1915/blinkx-ds-v1
+They are designer-approved and pixel-perfect.
+
+### Updated Layer 2 — UI Components
+
+OLD (legacy, do not use for new work):
+  Location: src/components/
+  Import:   import { CTAButton } from '../../components';
+
+NEW (use for all new work):
+  Location: src/design-system/
+  Import:   import { BlinkXButton } from '../../design-system';
+
+src/components/ still exists and existing widgets still import from it.
+Do NOT delete src/components/. Do NOT migrate existing widgets unless
+explicitly asked. For all NEW code, always use src/design-system/.
+
+### Hard rules — every Claude Code session must follow these:
+
+1. NEVER build a button, chip, segment, tab, toggle, tooltip, checkbox,
+   radio, dropdown, toast, or loader from scratch.
+   Always import from src/design-system/.
+
+2. NEVER write custom CSS for a component that exists in src/design-system/.
+   The component CSS files are source-of-truth. Do not modify them.
+
+3. NEVER modify any file inside src/design-system/.
+   Treat every file in src/design-system/ as read-only.
+
+4. NEVER import UI components from src/components/ in new widgets or features.
+   src/components/ is legacy. src/design-system/ is current.
+   Using src/components/ for new work is now an anti-pattern.
+
+5. NEVER hardcode hex color values. Always use --blinkx-* CSS variables
+   from src/tokens/variables.css.
+
+6. When building any feature, first check src/design-system/docs/ for
+   the relevant spec sheet before writing any code.
+   Example: before building chip UI, read src/design-system/docs/blinkx-chips.md
+
+### Import path reference by location:
+
+From a widget (src/widgets/WidgetName/index.jsx):
+  import { BlinkXButton } from '../../design-system';
+
+From terminal components (src/terminal/TopBar/):
+  import { BlinkXButton } from '../../design-system';
+
+From workspace (src/workspace/):
+  import { BlinkXButton } from '../design-system';
+
+From stores (src/stores/):
+  import { BlinkXButton } from '../design-system';
+
+### Component → use case map:
+
+| Component            | Use for |
+|----------------------|---------|
+| BlinkXButton         | All CTA buttons — primary, secondary |
+| BlinkXBuySellButton  | Buy / Sell order buttons ONLY — never use BlinkXButton for these |
+| BlinkXSegment        | Order type selector, any multi-option segmented picker, Buy/Sell toggle |
+| BlinkXTab            | Tab navigation inside widgets or panels |
+| BlinkXChip           | Filter chips, instrument tags, exchange labels |
+| BlinkXCheckbox       | All checkbox inputs |
+| BlinkXRadio          | All radio inputs |
+| BlinkXToggle         | All on/off toggle switches |
+| BlinkXTooltip        | All tooltips — never use the HTML title attribute |
+| BlinkXToast          | Toast notifications — always trigger via uiStore.addToast() |
+| BlinkXLoader         | Loading states inside widgets |
+| BlinkXNavDropdown    | Top bar navigation dropdowns |
+| BlinkXContentDropdown| Content/data selection dropdowns inside widgets |
+| BlinkXQuickActionBar | Quick action bar only |
+
+### BlinkXButton props reference:
+
+type="Primary"    → filled brand button
+type="Secondary"  → outlined button
+type="with-icon"  → icon-only button
+size="sm|md|lg|xl|2xl"
+theme             → read from uiStore: const { theme } = useUIStore();
+                    pass as theme={theme}
+children          → button label text
+
+### BlinkXBuySellButton props reference:
+
+bs="Buy" or bs="Sell"
+type="Primary" or type="Secondary"
+size="sm|md|lg|xl|2xl"
+theme             → read from uiStore: const { theme } = useUIStore();
+buttonStyle="Default" or buttonStyle="Symbol"
+
+### Token and spec reference:
+
+All --blinkx-* CSS variables:        src/tokens/variables.css
+Official token source of truth:       src/design-system/tokens/semanticColors.js
+Component spec sheets (21 docs):      src/design-system/docs/
+  blinkx-brand-buttons.md            → BlinkXButton spec
+  blinkx-buy-sell-buttons.md         → BlinkXBuySellButton spec
+  blinkx-segment.md                  → BlinkXSegment spec
+  blinkx-tab.md                      → BlinkXTab spec
+  blinkx-chips.md                    → BlinkXChip spec
+  blinkx-checkbox.md                 → BlinkXCheckbox spec
+  blinkx-radio.md                    → BlinkXRadio spec
+  blinkx-toggle.md                   → BlinkXToggle spec
+  blinkx-tooltip.md                  → BlinkXTooltip spec
+  blinkx-toast-message.md            → BlinkXToast spec
+  blinkx-loader.md                   → BlinkXLoader spec
+  blinkx-nav-dropdown.md             → BlinkXNavDropdown spec
+  blinkx-content-dropdown.md         → BlinkXContentDropdown spec
+  blinkx-quick-action-bar.md         → BlinkXQuickActionBar spec
+
+### BlinkXBuySellButton — when to use vs when NOT to use
+
+USE BlinkXBuySellButton when:
+- Building a new widget that needs a standalone Buy or Sell CTA button
+- The button is a standard height (24px–40px) with just a label
+- There is no custom content inside the button beyond the label
+
+DO NOT use BlinkXBuySellButton when:
+- The button needs custom vertical content inside it
+  (e.g. label + hotkey hint on a second line)
+- The button needs to fill a specific grid cell height
+  (e.g. OrderPad tradeRow where button must be ~44px tall)
+- The button is overlaid on a chart canvas at very small sizes
+  (e.g. MiniChart overlay buttons at 9px font)
+
+In these cases, build a custom button using --blinkx-* tokens:
+  background: var(--blinkx-color-bg-buy-default);   /* Buy */
+  background: var(--blinkx-color-bg-sell-default);  /* Sell */
+  color: var(--blinkx-color-text-white-on-cta);
+This ensures correct brand colors without breaking the layout.
+
+### Existing ScalperBox buttons — do not migrate
+
+src/widgets/ScalperBox/components/OrderPad/OrderPad.jsx
+  - Buy/Sell buttons have hotkey hints and custom height — do not replace
+  - They already use correct --blinkx-* tokens — they are visually correct
+
+src/widgets/ScalperBox/components/MiniChart/MiniChart.jsx
+  - Buy/Sell buttons are tiny chart overlays — do not replace
+  - They already use correct --blinkx-* tokens — they are visually correct
